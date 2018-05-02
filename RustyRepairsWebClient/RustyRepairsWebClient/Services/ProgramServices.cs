@@ -4,12 +4,14 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Class used to store data belonging to customers regarding their bookings
+/// Class which contains base functionality needed for the application to run
 /// </summary>
-public class Booking
+public class ProgramServices
 {
-    public Booking()
+    public ProgramServices()
     {
         
     }
+
+
 }
