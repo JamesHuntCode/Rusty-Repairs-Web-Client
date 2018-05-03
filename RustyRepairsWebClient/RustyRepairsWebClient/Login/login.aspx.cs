@@ -11,4 +11,19 @@ public partial class index : System.Web.UI.Page
     {
 
     }
+
+    // Method to control user logging into their account 
+    public void Login(object sender, EventArgs e)
+    {
+        string userInputUsername = Request.Form["email"];
+        string userInputPassword = Request.Form["password"];
+
+        System.Diagnostics.Debug.WriteLine(userInputUsername + ":" + userInputPassword);
+    }
+
+    // Method to take user to the page where they can create a new account
+    public void CreateAccount(object sender, EventArgs e)
+    {
+
+    }
 }
