@@ -26,27 +26,31 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" style="width: 14vw" id="">First and Last name:</span>
             </div>
-            <input type="text" class="form-control"/>
-            <input type="text" class="form-control"/>
+            <input type="text" class="form-control" />
+            <input type="text" class="form-control" />
         </div>
         <!-- Email box -->
         <div class="input-group mb-3 mx-auto" style="width: 40vw">
             <div class="input-group-prepend ">
                 <span class="input-group-text" style="width: 14vw" id="inputGroup-sizing-default">Email:</span>
             </div>
-            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"/>
+            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
         </div>
         <!-- Password Box -->
         <div class="input-group mb-3 mx-auto" style="width: 40vw">
             <div class="input-group-prepend">
                 <span class="input-group-text" style="width: 14vw" id="inputGroup-sizing-default2">Password:</span>
             </div>
-            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"/>
+            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
         </div>
         <!-- Buttons for Login and Create an Account -->
         <button type="button" style="width: 40vw" class="btn btn-outline-success btn-lg btn-block mx-auto mt-4">Create Account</button>
         <p class="text-center mt-5" style="color: grey"><i>Already Have an Account?*</i></p>
         <button type="button" style="width: 27vw" class="btn btn-outline-info btn-lg btn-block mx-auto">Login Here</button>
     </div>
+    <!-- ALL JAVASCRIPT CDN's NEEDED FOR BOOTSTRAP -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </body>
 </html>
