@@ -12,11 +12,7 @@ public partial class index : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        List<Customer> custs = this.services.GetCustomerData();
-        for (int i = 0; i < custs.Count; i++)
-        {
-            System.Diagnostics.Debug.WriteLine(custs[i].EmailAddress + ":" + custs[i].Password);
-        }
+        
     }
 
     // Method to control user logging into their account 
