@@ -37,11 +37,11 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" style="width: 14vw" id="inputGroup-sizing-default2">Password:</span>
                     </div>
-                    <asp:textbox type="text" runat="server" id="inputPassword" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
+                    <asp:textbox type="text" TextMode="Password" runat="server" id="inputPassword" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
                 </div>
                 <!-- Buttons for Login and Create an Account -->
                 <asp:Button ID="btnLogin" runat="server" OnClick="Login" Text="Login" Style="width: 40vw" class="btn btn-outline-success btn-lg btn-block mx-auto mt-4" />
-                <p class="text-center mt-5" style="color: grey"><i>Don't Have an Account?*</i></p>
+                <p class="text-center mt-5" style="color: grey"><i>Don't Have an Account?</i></p>
                 <asp:Button ID="btnCreateAccount" runat="server" OnClick="CreateAccount" Text="Create Account" Style="width: 27vw" class="btn btn-outline-info btn-lg btn-block mx-auto" />
             </form>
         </div>

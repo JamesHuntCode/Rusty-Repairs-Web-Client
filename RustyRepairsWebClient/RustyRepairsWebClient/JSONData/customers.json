@@ -2,19 +2,98 @@
     {
         "FirstName":"James",
         "LastName":"Hunt",
-        "Email":"james@james.com",
-        "Password":"example1"
+        "EmailAddress":"james@james.com",
+        "Password":"example1",
+        "CustomerID":"111111",
+        "JoinDate":"2018/05/04",
+        "Bookings":[
+            {
+                "Pending":"true",
+                "ManagerApproved":"false",
+                "Completed":"false",
+                "Date":"2018/05/24",
+                "ProblemSummary":"Engine failure."
+            },
+            {
+                "Pending":"false",
+                "ManagerApproved":"true",
+                "Completed":"true",
+                "Date":"2018/03/25",
+                "ProblemSummary":"Engine leak."
+            }
+        ],
+        "HasMissedBooking":"false",
+        "HasActiveAccount":"true",
+        "Vehicles":[
+            {
+                "CustomerID":"111111",
+                "CarMake":"Audi",
+                "CarModel":"R8",
+                "CarRegistration":"123ABC",
+                "CarColor":"White"
+            }
+        ]
     },
     {
         "FirstName":"Dom",
         "LastName":"Need",
-        "Email":"dom@dom.com",
-        "Password":"example2"
+        "EmailAddress":"dom@dom.com",
+        "Password":"example2",
+        "CustomerID":"111112",
+        "JoinDate":"2018/05/04",
+        "Bookings":[
+            {
+                "Pending":"true",
+                "ManagerApproved":"false",
+                "Completed":"false",
+                "Date":"2018/05/22",
+                "ProblemSummary":"Broken Gearbox."
+            },
+            {
+                "Pending":"false",
+                "ManagerApproved":"false",
+                "Completed":"false",
+                "Date":"2018/02/11",
+                "ProblemSummary":"Broken Windshield."
+            }
+        ],
+        "HasMissedBooking":"false",
+        "HasActiveAccount":"true",
+        "Vehicles":[]
     },
     {
         "FirstName":"Kyle",
         "LastName":"Rusby",
-        "Email":"kyle@kyle.com",
-        "Password":"example3"
+        "EmailAddress":"kyle@kyle.com",
+        "Password":"example3",
+        "CustomerID":"111113",
+        "JoinDate":"2018/05/04",
+        "Bookings":[
+            {
+                "Pending":"false",
+                "ManagerApproved":"true",
+                "Completed":"true",
+                "Date":"2018/02/29",
+                "ProblemSummary":"Smashed Mirror."
+            },
+            {
+                "Pending":"true",
+                "ManagerApproved":"false",
+                "Completed":"false",
+                "Date":"2018/06/03",
+                "ProblemSummary":"Punctured Tire."
+            }
+        ],
+        "HasMissedBooking":"true",
+        "HasActiveAccount":"true",
+        "Vehicles":[
+            {
+                "CustomerID":"111112",
+                "CarMake":"Porche",
+                "CarModel":"911",
+                "CarRegistration":"123ABC",
+                "CarColor":"Silver"
+            }
+        ]
     }
 ]

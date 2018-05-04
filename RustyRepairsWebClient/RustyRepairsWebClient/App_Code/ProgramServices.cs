@@ -1,13 +1,15 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace RustyRepairsWebClient
 {
     public class ProgramServices
     {
-        private string customerFile = "~/JSONData/customers.json";
-        private string staffFile = "~/JSONData/staff.json";
+        // ***** EDIT THESE PATHS - FOR DEBUGGING ONLY *****
+        private string customerFile = @"C:\git\Rusty-Repairs-Web-Client\RustyRepairsWebClient\RustyRepairsWebClient\JSONData\customers.json";
+        private string staffFile = @"C:\git\Rusty-Repairs-Web-Client\RustyRepairsWebClient\RustyRepairsWebClient\JSONData\staff.json";
 
         public ProgramServices()
         {
@@ -17,6 +19,18 @@ namespace RustyRepairsWebClient
         // Method to see if login details are correct 
         public bool LoginDetailsCorrect(string email, string password)
         {
+            List<Customer> customers = this.GetCustomerData();
+
+            for (int i = 0; i < customers.Count; i++)
+            {
+                Customer currentCustomer = customers[i];
+
+                if ((email == currentCustomer.EmailAddress) && (password == currentCustomer.Password))
+                {
+                    return true;
+                }
+            }
+
             return false;
         }
 
@@ -25,7 +39,11 @@ namespace RustyRepairsWebClient
         {
             List<Customer> customers = new List<Customer>();
 
-
+            using (StreamReader SR = new StreamReader(this.customerFile))
+            {
+                string json = SR.ReadToEnd();
+                customers = JsonConvert.DeserializeObject<List<Customer>>(json);
+            }
 
             return customers;
         }
@@ -57,7 +75,7 @@ namespace RustyRepairsWebClient
         }
 
         // Method to save all data in memory to .json files
-        public void SaveAllJSONData(List<Customer> customers, List<Staff> staff)
+        public void WriteJSON(List<Customer> customers, List<Staff> staff)
         {
 
         }

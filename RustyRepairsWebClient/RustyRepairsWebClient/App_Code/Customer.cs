@@ -7,7 +7,7 @@ namespace RustyRepairsWebClient
     {
         public int CustomerID { get; set; }
 
-        public DateTime JoinDate { get; set; }
+        public string JoinDate { get; set; }
 
         public List<Booking> Bookings { get; set; }
 
@@ -28,7 +28,7 @@ namespace RustyRepairsWebClient
             string firstName = this.FirstName;
             string lastName = this.LastName;
             string email = this.EmailAddress;
-            string dateJoined = this.JoinDate.ToShortDateString();
+            string dateJoined = this.JoinDate;
 
             string formattedOutput = ID + ";" + firstName + ";" + lastName + ";" + email + ";" + dateJoined;
 
@@ -47,7 +47,7 @@ namespace RustyRepairsWebClient
                     for (int i = 0; i < this.Bookings.Count; i++)
                     {
                         DateTime now = DateTime.Now;
-                        DateTime bookingDate = this.Bookings[i].Date;
+                        DateTime bookingDate = Convert.ToDateTime(this.Bookings[i].Date);
 
                         if (bookingDate > now)
                         {
@@ -61,7 +61,7 @@ namespace RustyRepairsWebClient
                     for (int i = 0; i < this.Bookings.Count; i++)
                     {
                         DateTime now = DateTime.Now;
-                        DateTime bookingDate = this.Bookings[i].Date;
+                        DateTime bookingDate = Convert.ToDateTime(this.Bookings[i].Date);
 
                         if (bookingDate < now)
                         {
