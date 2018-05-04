@@ -30,14 +30,14 @@
                     <div class="input-group-prepend ">
                         <span class="input-group-text" style="width: 14vw" id="inputGroup-sizing-default">Email:</span>
                     </div>
-                    <input type="text" name="email" runat="server" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
+                    <asp:textbox type="text" runat="server" id="inputEmail" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
                 </div>
                 <!-- Password Box -->
                 <div class="input-group mb-3 mx-auto" style="width: 40vw">
                     <div class="input-group-prepend">
                         <span class="input-group-text" style="width: 14vw" id="inputGroup-sizing-default2">Password:</span>
                     </div>
-                    <input type="text" name="password" runat="server" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default2" />
+                    <asp:textbox type="text" runat="server" id="inputPassword" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
                 </div>
                 <!-- Buttons for Login and Create an Account -->
                 <asp:Button ID="btnLogin" runat="server" OnClick="Login" Text="Login" Style="width: 40vw" class="btn btn-outline-success btn-lg btn-block mx-auto mt-4" />
