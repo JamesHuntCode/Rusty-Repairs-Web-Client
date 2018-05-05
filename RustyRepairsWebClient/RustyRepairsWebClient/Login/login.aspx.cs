@@ -29,13 +29,13 @@ public partial class index : System.Web.UI.Page
         else
         {
             // Display failed login attempt
-            System.Diagnostics.Debug.WriteLine("INCORRECT CREDENTIALS");
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Your email or password is incorrect. Please try again.')", true);
         }
     }
 
     // Method to take user to the page where they can create a new account
     public void CreateAccount(object sender, EventArgs e)
     {
-
+        Server.Transfer("~/CreateAccount/createaccount.aspx", true);
     }
 }
