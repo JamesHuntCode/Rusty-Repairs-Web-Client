@@ -4,7 +4,7 @@
         "LastName":"Hunt",
         "EmailAddress":"james@james.com",
         "Password":"example1",
-        "CustomerID":"111111",
+        "CustomerID":"1",
         "JoinDate":"2018/05/04",
         "Bookings":[
             {
@@ -26,7 +26,7 @@
         "HasActiveAccount":"true",
         "Vehicles":[
             {
-                "CustomerID":"111111",
+                "CustomerID":"1",
                 "CarMake":"Audi",
                 "CarModel":"R8",
                 "CarRegistration":"123ABC",
@@ -39,24 +39,9 @@
         "LastName":"Need",
         "EmailAddress":"dom@dom.com",
         "Password":"example2",
-        "CustomerID":"111112",
+        "CustomerID":"2",
         "JoinDate":"2018/05/04",
-        "Bookings":[
-            {
-                "Pending":"true",
-                "ManagerApproved":"false",
-                "Completed":"false",
-                "Date":"2018/05/22",
-                "ProblemSummary":"Broken Gearbox."
-            },
-            {
-                "Pending":"false",
-                "ManagerApproved":"false",
-                "Completed":"false",
-                "Date":"2018/02/11",
-                "ProblemSummary":"Broken Windshield."
-            }
-        ],
+        "Bookings":[],
         "HasMissedBooking":"false",
         "HasActiveAccount":"true",
         "Vehicles":[]
@@ -66,7 +51,7 @@
         "LastName":"Rusby",
         "EmailAddress":"kyle@kyle.com",
         "Password":"example3",
-        "CustomerID":"111113",
+        "CustomerID":"3",
         "JoinDate":"2018/05/04",
         "Bookings":[
             {
@@ -88,7 +73,7 @@
         "HasActiveAccount":"true",
         "Vehicles":[
             {
-                "CustomerID":"111112",
+                "CustomerID":"3",
                 "CarMake":"Porche",
                 "CarModel":"911",
                 "CarRegistration":"123ABC",

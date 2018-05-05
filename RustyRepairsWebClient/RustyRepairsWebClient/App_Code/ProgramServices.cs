@@ -10,6 +10,7 @@ namespace RustyRepairsWebClient
         // ***** EDIT THESE PATHS - FOR DEBUGGING ONLY *****
         private string customerFile = @"C:\git\Rusty-Repairs-Web-Client\RustyRepairsWebClient\RustyRepairsWebClient\JSONData\customers.json";
         private string staffFile = @"C:\git\Rusty-Repairs-Web-Client\RustyRepairsWebClient\RustyRepairsWebClient\JSONData\staff.json";
+        private List<Customer> tempCustomers = new List<Customer>();
 
         public ProgramServices()
         {
@@ -68,6 +69,43 @@ namespace RustyRepairsWebClient
             return staff;
         }
 
+        // Method to see if customer has input valid details
+        public bool DetailsAreValid(string data)
+        {
+            string[] dataPoints = data.Split(';');
+
+            // Check name length
+            if ((dataPoints[0].Length < 3) || (dataPoints[1].Length < 3))
+            {
+                return false;
+            }
+
+            // Check email configuration
+            if (!(dataPoints[2].Contains("@")))
+            {
+                return false;
+            }
+
+            // Check password
+            if (dataPoints[3].Length < 4)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public int GetNewCustomerID()
+        {
+            int newID = 0;
+
+            List<Customer> allCustomers = this.GetCustomerData();
+
+            newID = allCustomers.Count + 1;
+
+            return newID;
+        }
+
         // Method to see if customer account already exists
         public bool AlreadyExists(Customer customer)
         {
@@ -75,9 +113,18 @@ namespace RustyRepairsWebClient
         }
 
         // Method to save all data in memory to .json files
-        public void WriteJSON(List<Customer> customers, List<Staff> staff)
+        public void WriteJSON(Customer newCust, Staff newStaff)
         {
+            if (newCust != null)
+            {
+                // Update customer data
 
+            }
+            else
+            {
+                // Update staff data
+
+            }
         }
     }
 }
