@@ -22,26 +22,34 @@ public partial class CreateAccount_createaccount : System.Web.UI.Page
 
         if (this.services.DetailsAreValid(customerData))
         {
-            // Log user into account
-            Server.Transfer("~/CustomerHomepage/customerhomepage.aspx", true);
+            if (!(this.services.AlreadyExists(customerData)))
+            {
+                // Update JSON data
+                string[] breakdown = customerData.Split(';');
 
-            // Update JSON data
-            string[] breakdown = customerData.Split(';');
+                Customer newCust = new Customer();
 
-            Customer newCust = new Customer();
+                // Base user properties
+                newCust.FirstName = breakdown[0];
+                newCust.LastName = breakdown[1];
+                newCust.EmailAddress = breakdown[2];
+                newCust.Password = breakdown[3];
 
-            // Base user properties
-            newCust.FirstName = breakdown[0];
-            newCust.LastName = breakdown[1];
-            newCust.EmailAddress = breakdown[2];
-            newCust.Password = breakdown[3];
+                // Specific customer properies
+                newCust.CustomerID = this.services.GetNewCustomerID();
+                newCust.JoinDate = DateTime.Now.ToShortDateString();
 
-            // Specific customer properies
-            newCust.CustomerID = this.services.GetNewCustomerID();
-            newCust.JoinDate = DateTime.Now.ToShortDateString();
+                // Append data to JSON file
+                this.services.WriteJSON(newCust, null);
 
-            // Append data to JSON file
-            this.services.WriteJSON(newCust, null);
+                // Log user into account
+                Server.Transfer("~/CustomerHomepage/customerhomepage.aspx", true);
+            }
+            else
+            {
+                // Display credentials are already taken
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('An account with these details already exists. Try logging back in')", true);
+            }
         }
         else
         {

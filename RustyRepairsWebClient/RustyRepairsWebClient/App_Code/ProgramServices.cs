@@ -84,7 +84,7 @@ namespace RustyRepairsWebClient
             }
 
             // Check email configuration
-            if (!(dataPoints[2].Contains("@")))
+            if (!(dataPoints[2].Contains("@") && !(dataPoints[2].Contains(".") && !(dataPoints[2].Length > 5))))
             {
                 return false;
             }
@@ -110,9 +110,23 @@ namespace RustyRepairsWebClient
         }
 
         // Method to see if customer account already exists
-        public bool AlreadyExists(Customer customer)
+        public bool AlreadyExists(string data)
         {
-            return true;
+            List<Customer> allCustomers = this.GetCustomerData();
+
+            string email = data.Split(';')[2];
+
+            for (int i = 0; i < allCustomers.Count; i++)
+            {
+                Customer currentCustomer = allCustomers[i];
+
+                if (email == currentCustomer.EmailAddress)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         // Method to save all data in memory to .json files
