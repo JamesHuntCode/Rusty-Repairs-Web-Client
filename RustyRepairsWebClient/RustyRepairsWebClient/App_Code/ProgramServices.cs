@@ -10,7 +10,6 @@ namespace RustyRepairsWebClient
         // ***** EDIT THESE PATHS - FOR DEBUGGING ONLY *****
         private string customerFile = @"C:\git\Rusty-Repairs-Web-Client\RustyRepairsWebClient\RustyRepairsWebClient\JSONData\customers.json";
         private string staffFile = @"C:\git\Rusty-Repairs-Web-Client\RustyRepairsWebClient\RustyRepairsWebClient\JSONData\staff.json";
-        private List<Customer> tempCustomers = new List<Customer>();
 
         public ProgramServices()
         {
@@ -64,7 +63,11 @@ namespace RustyRepairsWebClient
         {
             List<Staff> staff = new List<Staff>();
 
-
+            using (StreamReader SR = new StreamReader(this.staffFile))
+            {
+                string json = SR.ReadToEnd();
+                staff = JsonConvert.DeserializeObject<List<Staff>>(json);
+            }
 
             return staff;
         }
@@ -118,12 +121,18 @@ namespace RustyRepairsWebClient
             if (newCust != null)
             {
                 // Update customer data
-
+                List<Customer> currentCustomers = this.GetCustomerData();
+                currentCustomers.Add(newCust);
+                string updatedCustomerData = JsonConvert.SerializeObject(currentCustomers, Formatting.Indented);
+                File.WriteAllText(this.customerFile, updatedCustomerData);
             }
             else
             {
                 // Update staff data
-
+                List<Staff> currentStaff = this.GetStaffData();
+                currentStaff.Add(newStaff);
+                string updatedCustomerData = JsonConvert.SerializeObject(currentStaff, Formatting.Indented);
+                File.WriteAllText(this.customerFile, updatedCustomerData);
             }
         }
     }

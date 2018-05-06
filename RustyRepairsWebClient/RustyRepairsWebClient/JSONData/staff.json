@@ -1,20 +1,35 @@
 [
     {
-        "FirstName":"James",
-        "LastName":"Hunt",
-        "Email":"james@james.com",
-        "Password":"example1"
+        "FirstName":"Dave",
+        "LastName":"Mills",
+        "Email":"dave@dave.com",
+        "Password": "example1",
+        "BusyDates": [
+          "22/05/2018",
+          "23/05/2018",
+          "24/05/2018",
+          "25/05/2018",
+          "26/05/2018"
+        ]
     },
     {
-        "FirstName":"Dom",
-        "LastName":"Need",
-        "Email":"dom@dom.com",
-        "Password":"example2"
+      "FirstName": "Stuart",
+      "LastName": "Woods",
+      "Email": "stu@stu.com",
+      "Password": "example2",
+      "BusyDates": [
+        "24/05/2018",
+        "25/05/2018",
+        "26/05/2018"
+      ]
     },
     {
-        "FirstName":"Kyle",
-        "LastName":"Rusby",
-        "Email":"kyle@kyle.com",
-        "Password":"example3"
+      "FirstName": "Richard",
+      "LastName": "West",
+      "Email": "rich@rich.com",
+      "Password": "example3",
+      "BusyDates": [
+        "23/05/2018"
+      ]
     }
 ]

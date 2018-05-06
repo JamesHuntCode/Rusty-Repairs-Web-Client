@@ -5,20 +5,20 @@
         "EmailAddress":"james@james.com",
         "Password":"example1",
         "CustomerID":"1",
-        "JoinDate":"2018/05/04",
+        "JoinDate":"04/05/2017",
         "Bookings":[
             {
                 "Pending":"true",
                 "ManagerApproved":"false",
                 "Completed":"false",
-                "Date":"2018/05/24",
+                "Date":"24/05/2018",
                 "ProblemSummary":"Engine failure."
             },
             {
                 "Pending":"false",
                 "ManagerApproved":"true",
                 "Completed":"true",
-                "Date":"2018/03/25",
+                "Date":"25/03/2018",
                 "ProblemSummary":"Engine leak."
             }
         ],
@@ -40,7 +40,7 @@
         "EmailAddress":"dom@dom.com",
         "Password":"example2",
         "CustomerID":"2",
-        "JoinDate":"2018/05/04",
+        "JoinDate":"04/05/2017",
         "Bookings":[],
         "HasMissedBooking":"false",
         "HasActiveAccount":"true",
@@ -52,20 +52,20 @@
         "EmailAddress":"kyle@kyle.com",
         "Password":"example3",
         "CustomerID":"3",
-        "JoinDate":"2018/05/04",
+        "JoinDate":"04/05/2017",
         "Bookings":[
             {
                 "Pending":"false",
                 "ManagerApproved":"true",
                 "Completed":"true",
-                "Date":"2018/02/29",
+                "Date":"29/02/2018",
                 "ProblemSummary":"Smashed Mirror."
             },
             {
                 "Pending":"true",
                 "ManagerApproved":"false",
                 "Completed":"false",
-                "Date":"2018/06/03",
+                "Date":"03/06/2018",
                 "ProblemSummary":"Punctured Tire."
             }
         ],

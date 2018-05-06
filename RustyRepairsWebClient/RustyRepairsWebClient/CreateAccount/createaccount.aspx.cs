@@ -30,13 +30,13 @@ public partial class CreateAccount_createaccount : System.Web.UI.Page
 
             Customer newCust = new Customer();
 
-            // User properties
+            // Base user properties
             newCust.FirstName = breakdown[0];
             newCust.LastName = breakdown[1];
             newCust.EmailAddress = breakdown[2];
             newCust.Password = breakdown[3];
 
-            // Customer properies
+            // Specific customer properies
             newCust.CustomerID = this.services.GetNewCustomerID();
             newCust.JoinDate = DateTime.Now.ToShortDateString();
 
