@@ -8,9 +8,9 @@ namespace RustyRepairsWebClient
     public class ProgramServices
     {
         // ***** EDIT THESE PATHS - FOR DEBUGGING ONLY *****
-        private string customerFile = @"C:\git\Rusty-Repairs-Web-Client\RustyRepairsWebClient\RustyRepairsWebClient\JSONData\customers.json";
-        private string staffFile = @"C:\git\Rusty-Repairs-Web-Client\RustyRepairsWebClient\RustyRepairsWebClient\JSONData\staff.json";
-        private string currentCustomer = @"C:\git\Rusty-Repairs-Web-Client\RustyRepairsWebClient\RustyRepairsWebClient\JSONData\currentcustomer.json";
+        private string customerFile = @"~\JSONData\customers.json";
+        private string staffFile = @"~\JSONData\staff.json";
+        private string currentCustomer = @"~\JSONData\currentcustomer.json";
 
         public ProgramServices()
         {
@@ -40,7 +40,7 @@ namespace RustyRepairsWebClient
         {
             List<Customer> customers = new List<Customer>();
 
-            using (StreamReader SR = new StreamReader(this.customerFile))
+            using (StreamReader SR = new StreamReader(System.Web.Hosting.HostingEnvironment.MapPath(this.customerFile)))
             {
                 string json = SR.ReadToEnd();
                 customers = JsonConvert.DeserializeObject<List<Customer>>(json);
@@ -73,7 +73,7 @@ namespace RustyRepairsWebClient
         {
             List<Staff> staff = new List<Staff>();
 
-            using (StreamReader SR = new StreamReader(this.staffFile))
+            using (StreamReader SR = new StreamReader(System.Web.Hosting.HostingEnvironment.MapPath(this.staffFile)))
             {
                 string json = SR.ReadToEnd();
                 staff = JsonConvert.DeserializeObject<List<Staff>>(json);
@@ -164,7 +164,7 @@ namespace RustyRepairsWebClient
                 List<Customer> currentCustomers = this.GetCustomerData();
                 currentCustomers.Add(newCust);
                 string updatedCustomerData = JsonConvert.SerializeObject(currentCustomers, Formatting.Indented);
-                File.WriteAllText(this.customerFile, updatedCustomerData);
+                File.WriteAllText(System.Web.Hosting.HostingEnvironment.MapPath(this.customerFile), updatedCustomerData);
             }
             else
             {
@@ -172,7 +172,7 @@ namespace RustyRepairsWebClient
                 List<Staff> currentStaff = this.GetStaffData();
                 currentStaff.Add(newStaff);
                 string updatedCustomerData = JsonConvert.SerializeObject(currentStaff, Formatting.Indented);
-                File.WriteAllText(this.customerFile, updatedCustomerData);
+                File.WriteAllText(System.Web.Hosting.HostingEnvironment.MapPath(this.customerFile), updatedCustomerData);
             }
         }
     }
