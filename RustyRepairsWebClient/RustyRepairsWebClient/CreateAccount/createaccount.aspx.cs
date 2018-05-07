@@ -43,6 +43,7 @@ public partial class CreateAccount_createaccount : System.Web.UI.Page
                 this.services.WriteJSON(newCust, null);
 
                 // Log user into account
+                this.services.SetCurrentCustomerData(newCust);
                 Server.Transfer("~/CustomerHomepage/customerhomepage.aspx", true);
             }
             else

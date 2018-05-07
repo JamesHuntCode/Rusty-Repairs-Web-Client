@@ -16,7 +16,7 @@
     <form runat="server">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#"><i class="fas fa-wrench mr-1"></i>Rustys' Repairs</a>
-            <asp:Button ID="btnLogout" runat="server" OnClick="Logout" class="btn btn-outline-success my-2 my-sm-0" text="Logout" type="submit"></asp:Button>
+            <asp:Button ID="btnLogout" runat="server" OnClick="Logout" class="btn btn-outline-success my-2 my-sm-0" text="Logout" type="submit" ></asp:Button>
         </nav>
         <div class="container-fluid">
             <div class="row mt-5">

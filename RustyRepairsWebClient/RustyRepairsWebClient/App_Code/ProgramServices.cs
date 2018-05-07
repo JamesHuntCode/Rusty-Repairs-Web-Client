@@ -49,6 +49,28 @@ namespace RustyRepairsWebClient
             return customers;
         }
 
+        // Method used to get all customer data from login details provided by customer
+        public Customer GetAllDetails(string details)
+        {
+            Customer cust = new Customer();
+
+            string[] data = details.Split(';');
+
+            for (int i = 0; i < this.GetCustomerData().Count; i++)
+            {
+                string custEmail = this.GetCustomerData()[i].EmailAddress;
+                string custPassword = this.GetCustomerData()[i].Password;
+
+                if ((data[0] == custEmail) && (data[1] == custPassword))
+                {
+                    cust = this.GetCustomerData()[i];
+                    break;
+                }
+            }
+
+            return cust;
+        }
+
         // Method to get all customer bookings from customers.json
         public List<Booking> GetCustomerBookingData()
         {
@@ -143,16 +165,26 @@ namespace RustyRepairsWebClient
         public Customer GetCurrentCustomerData()
         {
             Customer currentCustomer = new Customer();
+            List<Customer> data = new List<Customer>();
 
+            using (StreamReader SR = new StreamReader(System.Web.Hosting.HostingEnvironment.MapPath(this.currentCustomer)))
+            {
+                string json = SR.ReadToEnd();
+                data = JsonConvert.DeserializeObject<List<Customer>>(json);
+            }
 
+            currentCustomer = data[0];
 
             return currentCustomer;
         }
 
         // Method to wite current customer data to currentcustomer.json
-        public void SetCurrentCustomerData(string newCust, Customer existingCust)
+        public void SetCurrentCustomerData(Customer cust)
         {
-
+            List<Customer> currentCustomer = this.GetCustomerData();
+            currentCustomer.Add(cust);
+            string updatedCustomerData = JsonConvert.SerializeObject(currentCustomer, Formatting.Indented);
+            File.WriteAllText(System.Web.Hosting.HostingEnvironment.MapPath(this.currentCustomer), updatedCustomerData);
         }
 
         // Method to save all data in memory to .json files

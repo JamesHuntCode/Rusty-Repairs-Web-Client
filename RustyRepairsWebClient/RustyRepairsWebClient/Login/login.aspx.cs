@@ -24,6 +24,9 @@ public partial class index : System.Web.UI.Page
         if (this.services.LoginDetailsCorrect(userInputEmail, userInputPassword))
         {
             // Log user into account
+            Customer cust = this.services.GetAllDetails(userInputEmail + ";" + userInputPassword);
+            this.services.SetCurrentCustomerData(cust);
+
             Server.Transfer("~/CustomerHomepage/customerhomepage.aspx", true);
         }
         else
