@@ -35,6 +35,21 @@ namespace RustyRepairsWebClient
             return formattedOutput;
         }
 
+        // Method to find out if a customer has any upcoming bookings (will determine if they can delete their account)
+        public bool HasUpcomingBooking()
+        {
+            List<Booking> upcomingBookings = this.GetAllCustomerBookings("upcoming");
+            for (int i = 0; i < upcomingBookings.Count; i++)
+            {
+                if ((Convert.ToDateTime(upcomingBookings[i].Date) - DateTime.Now).Days > 7)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         // Method to get all customer bookings 
         public List<Booking> GetAllCustomerBookings(string preference)
         {
@@ -89,6 +104,15 @@ namespace RustyRepairsWebClient
                         {
                             fetchedBookings.Add(this.Bookings[i]);
                         }
+                    }
+
+                    break;
+
+                case "all":
+
+                    for(int i = 0; i < this.Bookings.Count; i++)
+                    {
+                        fetchedBookings.Add(this.Bookings[i]);
                     }
 
                     break;

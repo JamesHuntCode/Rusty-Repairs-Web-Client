@@ -10,6 +10,7 @@ namespace RustyRepairsWebClient
         // ***** EDIT THESE PATHS - FOR DEBUGGING ONLY *****
         private string customerFile = @"C:\git\Rusty-Repairs-Web-Client\RustyRepairsWebClient\RustyRepairsWebClient\JSONData\customers.json";
         private string staffFile = @"C:\git\Rusty-Repairs-Web-Client\RustyRepairsWebClient\RustyRepairsWebClient\JSONData\staff.json";
+        private string currentCustomer = @"C:\git\Rusty-Repairs-Web-Client\RustyRepairsWebClient\RustyRepairsWebClient\JSONData\currentcustomer.json";
 
         public ProgramServices()
         {
@@ -52,8 +53,17 @@ namespace RustyRepairsWebClient
         public List<Booking> GetCustomerBookingData()
         {
             List<Booking> bookings = new List<Booking>();
+            List<Customer> customers = this.GetCustomerData();
 
+            for (int i = 0; i < customers.Count; i++)
+            {
+                Customer currentCustomer = customers[i];
 
+                for (int j = 0; j < currentCustomer.Bookings.Count; j++)
+                {
+                    bookings.Add(currentCustomer.Bookings[j]);
+                }
+            }
 
             return bookings;
         }
@@ -127,6 +137,22 @@ namespace RustyRepairsWebClient
             }
 
             return false;
+        }
+
+        // Method to elicit all data from currentcustomer.json
+        public Customer GetCurrentCustomerData()
+        {
+            Customer currentCustomer = new Customer();
+
+
+
+            return currentCustomer;
+        }
+
+        // Method to wite current customer data to currentcustomer.json
+        public void SetCurrentCustomerData(string newCust, Customer existingCust)
+        {
+
         }
 
         // Method to save all data in memory to .json files
