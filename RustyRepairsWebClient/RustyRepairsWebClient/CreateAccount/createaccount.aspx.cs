@@ -22,7 +22,7 @@ public partial class CreateAccount_createaccount : System.Web.UI.Page
 
         if (this.services.DetailsAreValid(customerData))
         {
-            if (!(this.services.AlreadyExists(customerData)))
+            if (!(this.services.AlreadyExists(customerData, false)))
             {
                 // Update JSON data
                 string[] breakdown = customerData.Split(';');

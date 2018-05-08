@@ -46,25 +46,32 @@
                 </div>
                 <asp:TextBox runat="server" ID="email" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default4" />
             </div>
-            <!-- Password Box -->
+            <!-- Date Joined Box -->
             <div class="input-group mb-3 mx-auto" style="width: 40vw">
                 <div class="input-group-prepend">
                     <span class="input-group-text" style="width: 14vw" id="inputGroup-sizing-default5">Date Joined:</span>
+                </div>
+                <asp:TextBox runat="server" ID="dateJoined" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default6" />
+            </div>
+            <!-- Password Box -->
+            <div class="input-group mb-3 mx-auto" style="width: 40vw">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" style="width: 14vw" id="inputGroup-sizing-default6">Change Your Password:</span>
                 </div>
                 <asp:TextBox runat="server" ID="password" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default6" />
             </div>
             <!-- Buttons for Add Vehicle and Edit Personal Details -->
             <div class="row">
                 <div class="col">
-                    <asp:Button runat="server" OnClick="AddVehicle" type="button" Style="width: 20vw" Text="Add Vehicle" class="btn btn-outline-success btn-lg btn-block text-center float-right mt-4" />
+                    <asp:Button runat="server" ID="btnAddVehicle" OnClick="AddVehicle" type="button" Style="width: 20vw" Text="Add Vehicle" class="btn btn-outline-success btn-lg btn-block text-center float-right mt-4" />
                 </div>
                 <div class="col">
-                    <asp:Button runat="server" OnClick="EditSaveDetails" type="button" Style="width: 20vw" Text="Edit Details" class="btn btn-outline-success btn-lg btn-block float-left mt-4" />
+                    <asp:Button runat="server" ID="btnUpdateDetails" OnClick="EditSaveDetails" type="button" Style="width: 20vw" Text="Update Details" class="btn btn-outline-success btn-lg btn-block float-left mt-4" />
                 </div>
             </div>
             <p class="text-center mt-5" style="color: grey"><i>Already Have A Vehicle Registered With Us?</i></p>
             <!-- Button To Show Registered Vehicle Details -->
-            <asp:Button runat="server" OnClick="ViewVehicleDetails" type="button" Style="width: 27vw" Text="Show Vehicle Details" class="btn btn-outline-info btn-lg btn-block mx-auto" />
+            <asp:Button runat="server" ID="btnShowCarDetails" OnClick="ViewVehicleDetails" type="button" Style="width: 27vw" Text="Show Vehicle Details" class="btn btn-outline-info btn-lg btn-block mx-auto" />
         </form>
     </div>
     <!-- ALL JAVASCRIPT CDN's NEEDED FOR BOOTSTRAP -->

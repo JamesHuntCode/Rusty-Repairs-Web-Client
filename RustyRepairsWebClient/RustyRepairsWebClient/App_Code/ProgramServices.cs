@@ -155,19 +155,34 @@ namespace RustyRepairsWebClient
         }
 
         // Method to see if customer account already exists
-        public bool AlreadyExists(string data)
+        public bool AlreadyExists(string data, bool updating)
         {
             List<Customer> allCustomers = this.GetCustomerData();
 
             string email = data.Split(';')[2];
 
-            for (int i = 0; i < allCustomers.Count; i++)
+            if (!updating)
             {
-                Customer currentCustomer = allCustomers[i];
-
-                if (email == currentCustomer.EmailAddress)
+                for (int i = 0; i < allCustomers.Count; i++)
                 {
-                    return true;
+                    Customer currentCustomer = allCustomers[i];
+
+                    if (email == currentCustomer.EmailAddress)
+                    {
+                        return true;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < allCustomers.Count; i++)
+                {
+                    Customer currentCustomer = allCustomers[i];
+
+                    if ((email == currentCustomer.EmailAddress) && !(this.GetCurrentCustomerData().EmailAddress == currentCustomer.EmailAddress))
+                    {
+                        return true;
+                    }
                 }
             }
 
@@ -194,10 +209,31 @@ namespace RustyRepairsWebClient
         // Method to wite current customer data to currentcustomer.json
         public void SetCurrentCustomerData(Customer cust)
         {
-            List<Customer> currentCustomer = this.GetCustomerData();
+            List<Customer> currentCustomer = new List<Customer>();
             currentCustomer.Add(cust);
             string updatedCustomerData = JsonConvert.SerializeObject(currentCustomer, Formatting.Indented);
             File.WriteAllText(System.Web.Hosting.HostingEnvironment.MapPath(this.currentCustomer), updatedCustomerData);
+        }
+
+        // Method to update customer data currently in our system
+        public void UpdateCustomerData(Customer customer)
+        {
+            Customer customerToBeChanged = customer;
+            List<Customer> customers = this.GetCustomerData();
+
+            for (int i = 0; i < customers.Count; i++)
+            {
+                Customer currentCustomerInLoop = customers[i]; ;
+
+                if (customerToBeChanged.CustomerID == currentCustomerInLoop.CustomerID)
+                {
+                    customers.Remove(currentCustomerInLoop);
+                    customers.Add(customerToBeChanged);
+                    break;
+                }
+            }
+
+            this.UpdateJSON(customers);
         }
 
         // Method to get customer data from a booking they have
@@ -238,6 +274,13 @@ namespace RustyRepairsWebClient
                 string updatedCustomerData = JsonConvert.SerializeObject(currentStaff, Formatting.Indented);
                 File.WriteAllText(System.Web.Hosting.HostingEnvironment.MapPath(this.customerFile), updatedCustomerData);
             }
+        }
+
+        // Method to update customer related json data
+        private void UpdateJSON(List<Customer> customers)
+        {
+            string updatedCustomerData = JsonConvert.SerializeObject(customers, Formatting.Indented);
+            File.WriteAllText(System.Web.Hosting.HostingEnvironment.MapPath(this.customerFile), updatedCustomerData);
         }
     }
 }
