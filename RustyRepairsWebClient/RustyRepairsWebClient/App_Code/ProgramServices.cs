@@ -130,6 +130,7 @@ namespace RustyRepairsWebClient
             return true;
         }
 
+        // Method to assign a new customer a new ID
         public int GetNewCustomerID()
         {
             int newID = 0;
@@ -137,6 +138,18 @@ namespace RustyRepairsWebClient
             List<Customer> allCustomers = this.GetCustomerData();
 
             newID = allCustomers.Count + 1;
+
+            return newID;
+        }
+
+        // Method to assign a new booking a new ID
+        public int GetNewBookingID()
+        {
+            int newID = 0;
+
+            List<Booking> bookings = this.GetCustomerBookingData();
+
+            newID = bookings.Count + 1;
 
             return newID;
         }
@@ -185,6 +198,25 @@ namespace RustyRepairsWebClient
             currentCustomer.Add(cust);
             string updatedCustomerData = JsonConvert.SerializeObject(currentCustomer, Formatting.Indented);
             File.WriteAllText(System.Web.Hosting.HostingEnvironment.MapPath(this.currentCustomer), updatedCustomerData);
+        }
+
+        // Method to get customer data from a booking they have
+        public Customer GetCustomerDataFromBookingID(int ID)
+        {
+            Customer cust = new Customer();
+
+            List<Customer> customers = this.GetCustomerData();
+
+            for (int i = 0; i < customers.Count; i++)
+            {
+                if (ID == customers[i].CustomerID)
+                {
+                    cust = customers[i];
+                    break;
+                }
+            }
+
+            return cust;
         }
 
         // Method to save all data in memory to .json files

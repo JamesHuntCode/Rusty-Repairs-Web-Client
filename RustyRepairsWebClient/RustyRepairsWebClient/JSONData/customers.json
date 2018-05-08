@@ -7,20 +7,24 @@
         "CustomerID":"1",
         "JoinDate":"04/05/2017",
         "Bookings":[
-            {
-                "Pending":"true",
-                "ManagerApproved":"false",
-                "Completed":"false",
-                "Date":"24/05/2018",
-                "ProblemSummary":"Engine failure."
-            },
-            {
-                "Pending":"false",
-                "ManagerApproved":"true",
-                "Completed":"true",
-                "Date":"25/03/2018",
-                "ProblemSummary":"Engine leak."
-            }
+          {
+            "CustomerID": "1",
+            "BookingID": "1",
+            "Pending": "true",
+            "ManagerApproved": "false",
+            "Completed": "false",
+            "Date": "24/05/2018",
+            "ProblemSummary": "Engine failure."
+          },
+          {
+            "CustomerID": "1",
+            "BookingID": "2",
+            "Pending": "false",
+            "ManagerApproved": "true",
+            "Completed": "true",
+            "Date": "25/03/2018",
+            "ProblemSummary": "Engine leak."
+          }
         ],
         "HasMissedBooking":"false",
         "HasActiveAccount":"true",
@@ -54,20 +58,24 @@
         "CustomerID":"3",
         "JoinDate":"04/05/2017",
         "Bookings":[
-            {
-                "Pending":"false",
-                "ManagerApproved":"true",
-                "Completed":"true",
-                "Date":"29/02/2018",
-                "ProblemSummary":"Smashed Mirror."
-            },
-            {
-                "Pending":"true",
-                "ManagerApproved":"false",
-                "Completed":"false",
-                "Date":"03/06/2018",
-                "ProblemSummary":"Punctured Tire."
-            }
+          {
+            "CustomerID": "3",
+            "BookingID": "3",
+            "Pending": "false",
+            "ManagerApproved": "true",
+            "Completed": "true",
+            "Date": "29/02/2018",
+            "ProblemSummary": "Smashed Mirror."
+          },
+          {
+            "CustomerID": "3",
+            "BookingID": "4",
+            "Pending": "true",
+            "ManagerApproved": "false",
+            "Completed": "false",
+            "Date": "03/06/2018",
+            "ProblemSummary": "Punctured Tire."
+          }
         ],
         "HasMissedBooking":"true",
         "HasActiveAccount":"true",
