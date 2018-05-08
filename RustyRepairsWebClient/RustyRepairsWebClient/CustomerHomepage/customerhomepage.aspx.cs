@@ -25,37 +25,31 @@ public partial class Customer_Homepage_customerhomepage : System.Web.UI.Page
     // Method to allow the customer to request a booking
     public void CreateBooking(object sender, EventArgs e)
     {
-
+        Server.Transfer("~/CreateBooking/createbooking.aspx", true);
     }
 
     // Method to allow the customer to view their current bookings
     public void ViewBookings(object sender, EventArgs e)
     {
-
+        Server.Transfer("~/ViewBookings/viewbookings.aspx", true);
     }
 
     // Method to allow the customer to edit their current bookings
     public void EditBooking(object sender, EventArgs e)
     {
-
-    }
-
-    // Method to allow the customer to view their account details
-    public void ViewAccount(object sender, EventArgs e)
-    {
-
+        Server.Transfer("~/UpdateBooking/updatebooking.aspx", true);
     }
 
     // Method to allow the customer to edit their account details
     public void EditAccount(object sender, EventArgs e)
     {
-
+        Server.Transfer("~/AccountDetails/accountdetails.aspx", true);
     }
 
     // Method to allow the customer to cancel an arranged booking
     public void CancelBooking(object sender, EventArgs e)
     {
-
+        Server.Transfer("~/CancelBooking/cancelbooking.aspx", true);
     }
 
     // Method to allow the customer to delete their account
