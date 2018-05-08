@@ -16,42 +16,37 @@
     <form runat="server">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#"><i class="fas fa-wrench mr-1"></i>Rustys' Repairs</a>
-            <asp:Button ID="btnLogout" runat="server" OnClick="Logout" class="btn btn-outline-success my-2 my-sm-0" text="Logout" type="submit" ></asp:Button>
+            <!-- LOGOUT BUTTON -->
+            <asp:Button ID="btnLogout" runat="server" OnClick="Logout" class="btn btn-outline-success my-2 my-sm-0" Text="Logout" type="button" />
         </nav>
         <div class="container-fluid">
             <div class="row mt-5">
                 <div class="col-1"></div>
+                <!-- CREATE BOOKING SECTION -->
                 <div class="col-5 mx-auto">
-                    <button type="button" class="btn btn-outline-success btn-block" style="height: 30vh">
-                        <h2>Create Booking</h2>
-                    </button>
+                    <asp:Button runat="server" OnClick="CreateBooking" type="button" class="btn btn-outline-success btn-block" Style="height: 30vh" Text="Create Booking" />
                 </div>
+                <!-- VIEW BOOKINGS SECTION -->
                 <div class="col-5 mx-auto">
-                    <button type="button" class="btn btn-outline-info btn-block" style="height: 30vh">
-                        <h2>View Booking</h2>
-                    </button>
+                    <asp:Button runat="server" OnClick="ViewBookings" type="button" class="btn btn-outline-info btn-block" Style="height: 30vh" Text="View Your Bookings" />
                 </div>
                 <div class="col-1"></div>
             </div>
             <div class="row mt-5">
                 <div class="col-1"></div>
+                <!-- UPDATE BOOKING SECTION -->
                 <div class="col-5 mx-auto">
-                    <button type="button" class="btn btn-outline-warning btn-block" style="height: 15vh">
-                        <h2>Update Booking</h2>
-                    </button>
-                    <button type="button" class="btn btn-outline-warning btn-block" style="height: 15vh">
-                        <h2>Update Account</h2>
-                    </button>
+                    <asp:Button runat="server" OnClick="EditBooking" type="button" class="btn btn-outline-warning btn-block" Style="height: 15vh" Text="Update A Booking" />
+                    <!-- UPDATE ACCOUNT SECTION -->
+                    <asp:Button runat="server" OnClick="EditAccount" type="button" class="btn btn-outline-warning btn-block" Style="height: 15vh" Text="Update Your Account Details" />
                 </div>
                 <div class="col-5 mx-auto">
-                    <button type="button" class="btn btn-outline-danger btn-block" style="height: 15vh">
-                        <h2>Cancel Booking</h2>
-                    </button>
-                    <button type="button" class="btn btn-outline-danger btn-block" style="height: 15vh">
-                        <h2>Delete Booking</h2>
-                    </button>
+                    <!-- CANCEL BOOKING SECTION -->
+                    <asp:Button runat="server" OnClick="CancelBooking" type="button" class="btn btn-outline-danger btn-block" Style="height: 15vh" Text="Cancel A Booking" />
+                    <!-- DELETE ACCOUNT SECTION -->
+                    <asp:Button runat="server" OnClick="DeleteAccount" type="button" class="btn btn-outline-danger btn-block" Style="height: 15vh" Text="Deactivate Your Account" />
+                    <div class="col-1"></div>
                 </div>
-                <div class="col-1"></div>
             </div>
         </div>
     </form>

@@ -13,7 +13,7 @@ public partial class Customer_Homepage_customerhomepage : System.Web.UI.Page
 
 	protected void Page_Load(object sender, EventArgs e)
 	{
-
+        this.currentCustomer = this.services.GetCurrentCustomerData();
 	}
 
     // Method to log customer out of their account
@@ -23,43 +23,43 @@ public partial class Customer_Homepage_customerhomepage : System.Web.UI.Page
     }
 
     // Method to allow the customer to request a booking
-    public void CreateBooking()
+    public void CreateBooking(object sender, EventArgs e)
     {
 
     }
 
     // Method to allow the customer to view their current bookings
-    public void ViewBookings()
+    public void ViewBookings(object sender, EventArgs e)
     {
 
     }
 
     // Method to allow the customer to edit their current bookings
-    public void EditBooking()
+    public void EditBooking(object sender, EventArgs e)
     {
 
     }
 
     // Method to allow the customer to view their account details
-    public void ViewAccount()
+    public void ViewAccount(object sender, EventArgs e)
     {
 
     }
 
     // Method to allow the customer to edit their account details
-    public void EditAccount()
+    public void EditAccount(object sender, EventArgs e)
     {
 
     }
 
     // Method to allow the customer to cancel an arranged booking
-    public void CancelBooking()
+    public void CancelBooking(object sender, EventArgs e)
     {
 
     }
 
     // Method to allow the customer to delete their account
-    public void DeleteAccount()
+    public void DeleteAccount(object sender, EventArgs e)
     {
         if (!(this.currentCustomer.HasUpcomingBooking() && !(this.currentCustomer.HasMissedBooking)))
         {
