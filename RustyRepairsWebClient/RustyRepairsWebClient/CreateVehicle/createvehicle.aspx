@@ -22,6 +22,7 @@
                 </div>
             </div>
         </div>
+        <!-- Car Make and Model Box -->
         <div class="input-group mb-3 mt-5 mx-auto" style="width: 40vw">
             <div class="input-group-prepend">
                 <span class="input-group-text" style="width: 14vw" id="">Car Make and Model:</span>
@@ -45,7 +46,7 @@
         </div>
         <!-- Buttons for Login and Create an Account -->
         <button type="button" style="width: 40vw" class="btn btn-outline-success btn-lg btn-block mx-auto mt-4">Add Vehicle</button>
-        <p class="text-center mt-5" style="color: grey"><i>Already Added Your Vehicle To Your Account?*</i></p>
+        <p class="text-center mt-5" style="color: grey"><i>Already Added Your Vehicle To Your Account?</i></p>
         <button type="button" style="width: 27vw" class="btn btn-outline-info btn-lg btn-block mx-auto">Back to Account Details</button>
     </div>
     <!-- ALL JAVASCRIPT CDN's NEEDED FOR BOOTSTRAP -->

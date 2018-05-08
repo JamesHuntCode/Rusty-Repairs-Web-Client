@@ -1,41 +1,14 @@
 [
   {
-    "CustomerID": 1,
+    "CustomerID": 2,
     "JoinDate": "04/05/2017",
-    "Bookings": [
-      {
-        "CustomerID": 1,
-        "BookingID": 1,
-        "Pending": true,
-        "ManagerApproved": false,
-        "Completed": false,
-        "Date": "24/05/2018",
-        "ProblemSummary": "Engine failure."
-      },
-      {
-        "CustomerID": 1,
-        "BookingID": 2,
-        "Pending": false,
-        "ManagerApproved": true,
-        "Completed": true,
-        "Date": "25/03/2018",
-        "ProblemSummary": "Engine leak."
-      }
-    ],
+    "Bookings": [],
     "HasMissedBooking": false,
     "HasActiveAccount": true,
-    "Vehicles": [
-      {
-        "CustomerID": 1,
-        "CarMake": "Audi",
-        "CarModel": "R8",
-        "CarRegistration": "123ABC",
-        "CarColor": "White"
-      }
-    ],
-    "FirstName": "James",
-    "LastName": "Hunt",
-    "EmailAddress": "james@james.co.uk",
-    "Password": "example1"
+    "Vehicles": [],
+    "FirstName": "Dom",
+    "LastName": "Need",
+    "EmailAddress": "dom@dom.com",
+    "Password": "example2"
   }
 ]
