@@ -15,10 +15,19 @@ public partial class ViewVehicle_viewvehicle : System.Web.UI.Page
     {
         currentCustomer = this.services.GetCurrentCustomerData();
 
+        // Set all text boxes to read only
+        this.carMake.Attributes.Add("readonly", "readonly");
+        this.carModel.Attributes.Add("readonly", "readonly");
+        this.registration.Attributes.Add("readonly", "readonly");
+        this.ownerName.Attributes.Add("readonly", "readonly");
+
         Vehicle vehicle = currentCustomer.Vehicles[0];
 
         // Post vehicle data in text boxes
-
+        this.carMake.Text = vehicle.CarMake;
+        this.carModel.Text = vehicle.CarModel;
+        this.registration.Text = vehicle.CarRegistration;
+        this.ownerName.Text = vehicle.OwnerName;
     }
 
     // Method to send user back to their dashboard
