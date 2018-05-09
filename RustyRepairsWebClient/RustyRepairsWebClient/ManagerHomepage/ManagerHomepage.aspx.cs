@@ -16,65 +16,59 @@ public partial class ManagerHomepage_ManagerHomepage : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //I hate James' code
+        this.lstBookings.Items.Clear();
         this.services = new ProgramServices();
         this.currentBookingNum = 0;
         this.bookings = services.GetCustomerBookingData();
-        this.currentDateFrame = DateTime.Now;
-
-        for (int y = 0; y < 9; y++)
+        foreach (Booking booking in this.bookings)
         {
-            TableRow tRow = new TableRow();
-            this.calenderTable.Rows.Add(tRow);
-            for (int x = 0; x < 7; x++)
-            {
-                TableCell tCell = new TableCell
-                {
-                    Text = "Row " + y + ", Cell " + x
-                };
-                tCell.Style.Add("text-align", "center");
-                tRow.Cells.Add(tCell);
-            }
+            Customer cust = this.services.GetCustomerDataFromBookingID(booking.BookingID);
+            this.lstBookings.Items.Add(string.Format("{0}: {1}", cust.FirstName + " " + cust.LastName, booking.Date));
         }
-        this.calenderTable.Rows[0].Cells[0].Text = "<";
-        this.calenderTable.Rows[0].Cells[6].Text = ">";
+        //for (int i = 0; i < 50; i++)
+        //{
+        //    this.lstBookings.Items.Add(i.ToString());
+        //} //this.txtInput.Attributes.Add("readonly", "readonly");
 
-        for (int x = 1; x <= 5; x++)
-        {
-            this.calenderTable.Rows[0].Cells[x].Text = Enum.Parse(typeof(DayOfWeek), x.ToString()).ToString();
-        }
-        TimeSpan time = new TimeSpan(9, 0, 0);
-        for (int y = 1; y <= 8; y++)
-        {
-            this.calenderTable.Rows[y].Cells[0].Text = (time.Hours + ":00 - " + (time.Hours + 1) + ":00").ToString();
-            time = time.Add(new TimeSpan(1, 0, 0));
-        }
+        //    for (int y = 0; y < 9; y++)
+        //    {
+        //        TableRow tRow = new TableRow();
+        //        this.calenderTable.Rows.Add(tRow);
+        //        for (int x = 0; x < 7; x++)
+        //        {
+        //            TableCell tCell = new TableCell
+        //            {
+        //                Text = "Row " + y + ", Cell " + x
+        //            };
+        //            tCell.Style.Add("text-align", "center");
+        //            tRow.Cells.Add(tCell);
+        //        }
+        //    }
+        //    this.calenderTable.Rows[0].Cells[0].Text = "<";
+        //    this.calenderTable.Rows[0].Cells[6].Text = ">";
 
-        this.NextBooking(null, null);
+        //    for (int x = 1; x <= 5; x++)
+        //    {
+        //        this.calenderTable.Rows[0].Cells[x].Text = Enum.Parse(typeof(DayOfWeek), x.ToString()).ToString();
+        //    }
+        //    TimeSpan time = new TimeSpan(9, 0, 0);
+        //    for (int y = 1; y <= 8; y++)
+        //    {
+        //        this.calenderTable.Rows[y].Cells[0].Text = (time.Hours + ":00 - " + (time.Hours + 1) + ":00").ToString();
+        //        time = time.Add(new TimeSpan(1, 0, 0));
+        //    }
+        //}
     }
 
-    public void NextBooking(object sender, EventArgs e)
+    public void lstBookings_SelectedIndexChanged(object sender, EventArgs e)
     {
-        Booking booking = this.bookings[this.currentBookingNum];
-        Customer customer = this.services.GetCustomerDataFromBookingID(booking.BookingID);
-        this.firstNameLastName.InnerText = string.Format("First name & Last name: {0} {1}", customer.FirstName, customer.LastName);
-        this.requestDate.InnerText = string.Format("Booking request time: {0}", booking.Date);
-        this.previousNoShow.InnerText = string.Format("Previous no show: {0}", customer.HasMissedBooking);
+        int index = this.lstBookings.SelectedIndex;
+        //if (index < 0 || index > this.bookings.Count)
+        //    return;
 
-        this.currentBookingNum++;
-        if (this.currentBookingNum > this.bookings.Count)
-            this.currentBookingNum = 0;
-    }
-
-    public void PreviousBooking(object sender, EventArgs e)
-    {
-        Booking booking = this.bookings[this.currentBookingNum];
-        Customer customer = this.services.GetCustomerDataFromBookingID(booking.BookingID);
-        this.firstNameLastName.InnerText = string.Format("First name & Last name: {0} {1}", customer.FirstName, customer.LastName);
-        this.requestDate.InnerText = string.Format("Booking request time: {0}", booking.Date);
-        this.previousNoShow.InnerText = string.Format("Previous no show: {0}", customer.HasMissedBooking);
-
-        this.currentBookingNum--;
-        if (this.currentBookingNum < 0)
-            this.currentBookingNum = this.bookings.Count;
+        Booking booking = this.bookings[index];
+        Customer cust = this.services.GetCustomerDataFromBookingID(booking.BookingID);
+        this.txtFirstName.Text = cust.FirstName;
+        this.txtLastName.Text = cust.LastName;
     }
 }
