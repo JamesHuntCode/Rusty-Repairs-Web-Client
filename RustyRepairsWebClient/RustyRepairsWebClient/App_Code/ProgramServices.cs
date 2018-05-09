@@ -245,10 +245,13 @@ namespace RustyRepairsWebClient
 
             for (int i = 0; i < customers.Count; i++)
             {
-                if (ID == customers[i].CustomerID)
+                for (int j = 0; j < customers[i].Bookings.Count; j++)
                 {
-                    cust = customers[i];
-                    break;
+                    if (ID == customers[i].Bookings[j].BookingID)
+                    {
+                        cust = customers[i];
+                        break;
+                    }
                 }
             }
 

@@ -45,8 +45,8 @@
                     <asp:Button runat="server" OnClick="CancelBooking" type="button" class="btn btn-outline-danger btn-block" Style="height: 15vh" Text="Cancel A Booking" />
                     <!-- DELETE ACCOUNT SECTION -->
                     <asp:Button runat="server" OnClick="DeleteAccount" type="button" class="btn btn-outline-danger btn-block" Style="height: 15vh" Text="Deactivate Your Account" />
-                    <div class="col-1"></div>
                 </div>
+                <div class="col-1"></div>
             </div>
         </div>
     </form>

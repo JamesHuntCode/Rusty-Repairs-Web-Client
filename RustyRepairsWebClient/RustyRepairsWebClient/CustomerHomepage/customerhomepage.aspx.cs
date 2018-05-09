@@ -31,13 +31,21 @@ public partial class Customer_Homepage_customerhomepage : System.Web.UI.Page
     // Method to allow the customer to view their current bookings
     public void ViewBookings(object sender, EventArgs e)
     {
-        Server.Transfer("~/ViewBookings/viewbookings.aspx", true);
+        if (this.currentCustomer.Vehicles.Count > 0)
+        {
+            Server.Transfer("~/ViewBookings/viewbookings.aspx", true);
+        }
+        else
+        {
+            // Alert the user they don't have a recorded vehicle
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('You do not have a vehicle saved in our records.')", true);
+        }
     }
 
     // Method to allow the customer to edit their current bookings
     public void EditBooking(object sender, EventArgs e)
     {
-        Server.Transfer("~/CreateBooking/createbooking.aspx", true);
+        Server.Transfer("~/ViewBookings/viewbookings.aspx", true);
     }
 
     // Method to allow the customer to edit their account details

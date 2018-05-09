@@ -27,24 +27,24 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" style="width: 14vw" id="">Car Make and Model:</span>
             </div>
-            <input type="text" class="form-control">
-            <input type="text" class="form-control">
+            <asp:textbox ID="carMake" type="text" class="form-control" runat="server" />
+            <asp:textbox ID="carModel" type="text" class="form-control" runat="server" />
         </div>
-        <!-- Email box -->
+        <!-- Car Registration Box -->
         <div class="input-group mb-3 mx-auto" style="width: 40vw">
             <div class="input-group-prepend ">
                 <span class="input-group-text" style="width: 14vw" id="inputGroup-sizing-default">Car Registration:</span>
             </div>
-            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"/>
+            <asp:textbox runat="server" ID="registration" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"/>
         </div>
-        <!-- Password Box -->
+        <!-- Owner Details Box -->
         <div class="input-group mb-3 mx-auto" style="width: 40vw">
             <div class="input-group-prepend">
                 <span class="input-group-text" style="width: 14vw" id="inputGroup-sizing-default2">Owners Name:</span>
             </div>
-            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default2"/>
+            <asp:textbox runat="server" ID="ownerName" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default2"/>
         </div>
-        <!-- Buttons for Login and Create an Account -->
+        <!-- Buttons To Add Vehicle Or Return To Account -->
         <button type="button" style="width: 40vw" class="btn btn-outline-success btn-lg btn-block mx-auto mt-4">Add Vehicle</button>
         <p class="text-center mt-5" style="color: grey"><i>Already Added Your Vehicle To Your Account?</i></p>
         <button type="button" style="width: 27vw" class="btn btn-outline-info btn-lg btn-block mx-auto">Back to Account Details</button>
