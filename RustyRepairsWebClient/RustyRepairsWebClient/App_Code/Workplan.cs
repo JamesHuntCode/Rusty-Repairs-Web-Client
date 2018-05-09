@@ -2,6 +2,7 @@
 {
     public class Workplan
     {
+        public int BookingID { get; set; }
         public int WorkPlanID { get; set; }
 
         public string DateStarted { get; set; }
