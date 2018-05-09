@@ -25,27 +25,43 @@ public partial class Customer_Homepage_customerhomepage : System.Web.UI.Page
     // Method to allow the customer to request a booking
     public void CreateBooking(object sender, EventArgs e)
     {
-        Server.Transfer("~/CreateBooking/createbooking.aspx", true);
+        if (this.currentCustomer.Vehicles.Count > 0)
+        {
+            Server.Transfer("~/CreateBooking/createbooking.aspx", true);
+        }
+        else
+        {
+            // Alert the user they don't have a recorded vehicle to create a booking with
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Please add a vehicle to your account and then request a booking again.')", true);
+        }
     }
 
     // Method to allow the customer to view their current bookings
     public void ViewBookings(object sender, EventArgs e)
     {
-        if (this.currentCustomer.Vehicles.Count > 0)
+        if ((this.currentCustomer.Vehicles.Count > 0) && !(this.currentCustomer.GetAllCustomerBookings("upcoming").Count == 0))
         {
             Server.Transfer("~/ViewBookings/viewbookings.aspx", true);
         }
         else
         {
-            // Alert the user they don't have a recorded vehicle
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('You do not have a vehicle saved in our records.')", true);
+            // Alert the user they don't have any upcoming bookings to view
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('You do not have any upcoming bookings.')", true);
         }
     }
 
     // Method to allow the customer to edit their current bookings
     public void EditBooking(object sender, EventArgs e)
     {
-        Server.Transfer("~/ViewBookings/viewbookings.aspx", true);
+        if ((this.currentCustomer.Vehicles.Count > 0) && !(this.currentCustomer.GetAllCustomerBookings("upcoming").Count == 0))
+        {
+            Server.Transfer("~/ViewBookings/viewbookings.aspx", true);
+        }
+        else
+        {
+            // Alert the user they don't have any upcoming bookings to edit
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('You do not have any upcoming bookings to update.')", true);
+        }
     }
 
     // Method to allow the customer to edit their account details
@@ -57,7 +73,15 @@ public partial class Customer_Homepage_customerhomepage : System.Web.UI.Page
     // Method to allow the customer to cancel an arranged booking
     public void CancelBooking(object sender, EventArgs e)
     {
-        Server.Transfer("~/ViewBookings/viewbookings.aspx", true);
+        if ((this.currentCustomer.Vehicles.Count > 0) && !(this.currentCustomer.GetAllCustomerBookings("upcoming").Count == 0))
+        {
+            Server.Transfer("~/ViewBookings/viewbookings.aspx", true);
+        }
+        else
+        {
+            // Alert the user they don't have a recorded vehicle
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('You do not have any upcoming bookings to cancel.')", true);
+        }
     }
 
     // Method to allow the customer to delete their account
