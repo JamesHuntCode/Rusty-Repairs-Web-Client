@@ -291,12 +291,36 @@ namespace RustyRepairsWebClient
             string date = combo.Split(';')[1];
 
             // Validate time
-
+            if (!(this.IsTime(time)))
+            {
+                return false;
+            }
 
             // Validate date
+            if (!(this.IsDate(date)))
+            {
+                return false;
+            }
 
+            // Validate that requested is not in the past
+            if (DateTime.Now > Convert.ToDateTime(date))
+            {
+                return false;
+            }
 
             return true;
+        }
+
+        // Method to detect if input time is actually a time
+        private bool IsTime(string theTime)
+        {
+            return TimeSpan.TryParse(theTime, out var validateTime);
+        }
+
+        // Method to detect if input date is actually a date
+        private bool IsDate(string TheDate)
+        {
+            return DateTime.TryParse(TheDate, out var validateDate);
         }
 
         // Method to save all data in memory to .json files

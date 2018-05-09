@@ -14,6 +14,10 @@ public partial class CreateBooking_createbooking : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         this.currentCustomer = this.services.GetCurrentCustomerData();
+
+        // Output a couple of placeholders to show user what format to use
+        this.time.Text = DateTime.Now.ToShortTimeString();
+        this.date.Text = DateTime.Now.ToShortDateString();
     }
     
     // Method to validate booking and send user to their upcoming bookings page
