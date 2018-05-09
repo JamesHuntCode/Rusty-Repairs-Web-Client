@@ -5,7 +5,15 @@
     "Bookings": [],
     "HasMissedBooking": false,
     "HasActiveAccount": true,
-    "Vehicles": [],
+    "Vehicles": [
+      {
+        "CustomerID": 2,
+        "CarMake": "Audi",
+        "CarModel": "A4",
+        "CarRegistration": "B4LL1N",
+        "OwnerName": "Dominic Need"
+      }
+    ],
     "FirstName": "Dom",
     "LastName": "Need",
     "EmailAddress": "dom@dom.com",

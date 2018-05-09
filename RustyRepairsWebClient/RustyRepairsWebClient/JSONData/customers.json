@@ -1,17 +1,5 @@
 [
   {
-    "CustomerID": 2,
-    "JoinDate": "04/05/2017",
-    "Bookings": [],
-    "HasMissedBooking": false,
-    "HasActiveAccount": true,
-    "Vehicles": [],
-    "FirstName": "Dom",
-    "LastName": "Need",
-    "EmailAddress": "dom@dom.com",
-    "Password": "example2"
-  },
-  {
     "CustomerID": 3,
     "JoinDate": "04/05/2017",
     "Bookings": [
@@ -42,7 +30,7 @@
         "CarMake": "Porche",
         "CarModel": "911",
         "CarRegistration": "123ABC",
-        "CarColor": "Silver"
+        "OwnerName": null
       }
     ],
     "FirstName": "Kyle",
@@ -81,12 +69,32 @@
         "CarMake": "Audi",
         "CarModel": "R8",
         "CarRegistration": "123ABC",
-        "CarColor": "White"
+        "OwnerName": null
       }
     ],
     "FirstName": "James",
     "LastName": "Hunt",
     "EmailAddress": "james@james.com",
     "Password": "example1"
+  },
+  {
+    "CustomerID": 2,
+    "JoinDate": "04/05/2017",
+    "Bookings": [],
+    "HasMissedBooking": false,
+    "HasActiveAccount": true,
+    "Vehicles": [
+      {
+        "CustomerID": 2,
+        "CarMake": "Audi",
+        "CarModel": "A4",
+        "CarRegistration": "B4LL1N",
+        "OwnerName": "Dominic Need"
+      }
+    ],
+    "FirstName": "Dom",
+    "LastName": "Need",
+    "EmailAddress": "dom@dom.com",
+    "Password": "example2"
   }
 ]

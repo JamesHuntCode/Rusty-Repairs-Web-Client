@@ -22,32 +22,34 @@
                 </div>
             </div>
         </div>
-        <!-- Car Make and Model Box -->
-        <div class="input-group mb-3 mt-5 mx-auto" style="width: 40vw">
-            <div class="input-group-prepend">
-                <span class="input-group-text" style="width: 14vw" id="">Car Make and Model:</span>
+        <form runat="server">
+            <!-- Car Make and Model Box -->
+            <div class="input-group mb-3 mt-5 mx-auto" style="width: 40vw">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" style="width: 14vw" id="">Car Make and Model:</span>
+                </div>
+                <asp:TextBox ID="carMake" type="text" class="form-control" runat="server" />
+                <asp:TextBox ID="carModel" type="text" class="form-control" runat="server" />
             </div>
-            <asp:textbox ID="carMake" type="text" class="form-control" runat="server" />
-            <asp:textbox ID="carModel" type="text" class="form-control" runat="server" />
-        </div>
-        <!-- Car Registration Box -->
-        <div class="input-group mb-3 mx-auto" style="width: 40vw">
-            <div class="input-group-prepend ">
-                <span class="input-group-text" style="width: 14vw" id="inputGroup-sizing-default">Car Registration:</span>
+            <!-- Car Registration Box -->
+            <div class="input-group mb-3 mx-auto" style="width: 40vw">
+                <div class="input-group-prepend ">
+                    <span class="input-group-text" style="width: 14vw" id="inputGroup-sizing-default">Car Registration:</span>
+                </div>
+                <asp:TextBox runat="server" ID="registration" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
             </div>
-            <asp:textbox runat="server" ID="registration" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"/>
-        </div>
-        <!-- Owner Details Box -->
-        <div class="input-group mb-3 mx-auto" style="width: 40vw">
-            <div class="input-group-prepend">
-                <span class="input-group-text" style="width: 14vw" id="inputGroup-sizing-default2">Owners Name:</span>
+            <!-- Owner Details Box -->
+            <div class="input-group mb-3 mx-auto" style="width: 40vw">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" style="width: 14vw" id="inputGroup-sizing-default2">Owners Name:</span>
+                </div>
+                <asp:TextBox runat="server" ID="ownerName" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default2" />
             </div>
-            <asp:textbox runat="server" ID="ownerName" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default2"/>
-        </div>
-        <!-- Buttons To Add Vehicle Or Return To Account -->
-        <button type="button" style="width: 40vw" class="btn btn-outline-success btn-lg btn-block mx-auto mt-4">Add Vehicle</button>
-        <p class="text-center mt-5" style="color: grey"><i>Already Added Your Vehicle To Your Account?</i></p>
-        <button type="button" style="width: 27vw" class="btn btn-outline-info btn-lg btn-block mx-auto">Back to Account Details</button>
+            <!-- Buttons To Add Vehicle Or Return To Account -->
+            <asp:Button runat="server" ID="btnAddVehicle" OnClick="CreateVehicle" type="button" Style="width: 40vw" class="btn btn-outline-success btn-lg btn-block mx-auto mt-4" Text="Add Vehicle" />
+            <p class="text-center mt-5" style="color: grey"><i>Already Added Your Vehicle To Your Account?</i></p>
+            <asp:Button runat="server" ID="btnBack" OnClick="BackToAccount" type="button" Style="width: 27vw" class="btn btn-outline-info btn-lg btn-block mx-auto" Text="Back To Account Details" />
+        </form>
     </div>
     <!-- ALL JAVASCRIPT CDN's NEEDED FOR BOOTSTRAP -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

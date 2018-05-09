@@ -35,6 +35,32 @@ namespace RustyRepairsWebClient
             return false;
         }
 
+        // Method to validate data provided by customer regarding their vehicle
+        public bool VehicleDataIsValid(string data)
+        {
+            string[] breakdown = data.Split(';');
+
+            // Check car make and model
+            if ((breakdown[0].Length == 0) || (breakdown[1].Length == 0))
+            {
+                return false;
+            }
+
+            // Check registration data
+            if (breakdown[2].Length == 0)
+            {
+                return false;
+            }
+
+            // Check car owner data
+            if (breakdown[3].Length < 2)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         // Method to get all customer data from customers.json
         public List<Customer> GetCustomerData()
         {
@@ -223,7 +249,7 @@ namespace RustyRepairsWebClient
 
             for (int i = 0; i < customers.Count; i++)
             {
-                Customer currentCustomerInLoop = customers[i]; ;
+                Customer currentCustomerInLoop = customers[i];
 
                 if (customerToBeChanged.CustomerID == currentCustomerInLoop.CustomerID)
                 {
