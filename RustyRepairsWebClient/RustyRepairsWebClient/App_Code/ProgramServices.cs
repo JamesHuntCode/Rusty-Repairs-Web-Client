@@ -26,7 +26,7 @@ namespace RustyRepairsWebClient
             {
                 Customer currentCustomer = customers[i];
 
-                if ((email == currentCustomer.EmailAddress) && (password == currentCustomer.Password))
+                if ((email == currentCustomer.EmailAddress) && (password == currentCustomer.Password) && (currentCustomer.HasActiveAccount))
                 {
                     return true;
                 }

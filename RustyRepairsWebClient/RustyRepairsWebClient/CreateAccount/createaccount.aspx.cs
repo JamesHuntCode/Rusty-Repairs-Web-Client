@@ -64,10 +64,10 @@ public partial class CreateAccount_createaccount : System.Web.UI.Page
     {
         List<string> data = new List<string>();
 
-        data.Add(this.firstName.Text);
-        data.Add(this.lastName.Text);
-        data.Add(this.email.Text);
-        data.Add(this.password.Text);
+        data.Add(Request["firstName"]);
+        data.Add(Request["lastName"]);
+        data.Add(Request["email"]);
+        data.Add(Request["password"]);
 
         return String.Join(";", data);
     }
