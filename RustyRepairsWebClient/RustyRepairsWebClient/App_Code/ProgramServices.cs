@@ -284,6 +284,21 @@ namespace RustyRepairsWebClient
             return cust;
         }
 
+        // Method to validate date and time combo input when user requests a booking
+        public bool DateAndTimeInputsAreValid(string combo)
+        {
+            string time = combo.Split(';')[0];
+            string date = combo.Split(';')[1];
+
+            // Validate time
+
+
+            // Validate date
+
+
+            return true;
+        }
+
         // Method to save all data in memory to .json files
         public void WriteJSON(Customer newCust, Staff newStaff)
         {
