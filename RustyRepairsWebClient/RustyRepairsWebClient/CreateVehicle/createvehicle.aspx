@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Rustys' Repairs - Add Vehicle</title>
+    <title>Rusty's Repairs - Add Vehicle</title>
     <link rel="shortcut icon" type="image/x-icon" href="~/images/favicon.png" />
 
     <!-- LINKS TO ALL CSS FILES & CDN's -->
