@@ -33,12 +33,19 @@
                     <asp:TextBox ID="time" type="text" class="form-control" runat="server" />
                     <asp:TextBox ID="date" type="text" class="form-control" runat="server" />
                 </div>
-                <!-- Email box -->
+                <!-- Problem Summary Box -->
                 <div class="input-group mb-3 mx-auto" style="width: 50vw">
                     <div class="input-group-prepend ">
                         <span class="input-group-text" style="width: 18vw" id="inputGroup-sizing-default">Problem Summary</span>
                     </div>
                     <asp:textbox runat="server" ID="problemSummary" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
+                </div>
+                <!-- Booking Status Box -->
+                <div class="input-group mb-3 mx-auto" style="width: 50vw">
+                    <div class="input-group-prepend ">
+                        <span class="input-group-text" style="width: 18vw" id="inputGroup-sizing-default2">Booking Status</span>
+                    </div>
+                    <asp:textbox runat="server" ID="status" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
                 </div>
             </div>
             <!-- Buttons for Editing & Deleting Bookings -->

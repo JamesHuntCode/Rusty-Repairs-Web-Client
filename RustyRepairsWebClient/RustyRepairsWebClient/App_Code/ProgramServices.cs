@@ -7,7 +7,7 @@ namespace RustyRepairsWebClient
 {
     public class ProgramServices
     {
-        // ***** EDIT THESE PATHS - FOR DEBUGGING ONLY *****
+        // JSON Data file paths
         private string customerFile = @"~\JSONData\customers.json";
         private string staffFile = @"~\JSONData\staff.json";
         private string currentCustomer = @"~\JSONData\currentcustomer.json";
@@ -131,7 +131,7 @@ namespace RustyRepairsWebClient
             return staff;
         }
 
-        // Method to get all staff data from staff.json
+        // Method to get all workplans from workplan.json
         public List<Workplan> Getworkplans()
         {
             List<Workplan> workplans = new List<Workplan>();
@@ -275,6 +275,64 @@ namespace RustyRepairsWebClient
             }
 
             this.UpdateJSON(customers);
+        }
+
+        // Method to allow the garage manager to decline or approve bookings
+        public void UpdateBooking(string action, Booking booking)
+        {
+            Booking bookingToBeChanged = booking;
+            List<Customer> customers = this.GetCustomerData();
+
+            if (action == "approve")
+            {
+                // Update properties
+                bookingToBeChanged.ManagerApproved = true;
+                bookingToBeChanged.ManagerDeclined = false;
+                booking.Pending = false;
+
+                // Save JSON data
+                for (int i = 0; i < customers.Count; i++)
+                {
+                    for (int j = 0; j < customers[i].Bookings.Count; j++)
+                    {
+                        Booking currentBookingInLoop = customers[i].Bookings[j];
+
+                        if (bookingToBeChanged.BookingID == currentBookingInLoop.BookingID)
+                        {
+                            customers[i].Bookings.Remove(currentBookingInLoop);
+                            customers[i].Bookings.Add(bookingToBeChanged);
+                            break;
+                        }
+                    }
+                }
+
+                this.UpdateJSON(customers);
+            }
+            else
+            {
+                // Update properties
+                bookingToBeChanged.ManagerApproved = false;
+                bookingToBeChanged.ManagerDeclined = true;
+                booking.Pending = false;
+
+                // Save JSON data
+                for (int i = 0; i < customers.Count; i++)
+                {
+                    for (int j = 0; j < customers[i].Bookings.Count; j++)
+                    {
+                        Booking currentBookingInLoop = customers[i].Bookings[j];
+
+                        if (bookingToBeChanged.BookingID == currentBookingInLoop.BookingID)
+                        {
+                            customers[i].Bookings.Remove(currentBookingInLoop);
+                            customers[i].Bookings.Add(bookingToBeChanged);
+                            break;
+                        }
+                    }
+                }
+
+                this.UpdateJSON(customers);
+            }
         }
 
         // Method to get customer data from a booking they have

@@ -25,7 +25,7 @@ public partial class CreateBooking_createbooking : System.Web.UI.Page
     {
         string bookingData = this.GetBookingData();
 
-        if (this.services.DateAndTimeInputsAreValid(bookingData))
+        if ((this.services.DateAndTimeInputsAreValid(bookingData)) && !(bookingData[2].Equals(String.Empty)))
         {
             Booking newBooking = new Booking();
 

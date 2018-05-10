@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace RustyRepairsWebClient
+﻿namespace RustyRepairsWebClient
 {
     public class Booking
     {
@@ -9,7 +7,9 @@ namespace RustyRepairsWebClient
 
         public bool Pending { get; set; } = true;
         public bool ManagerApproved { get; set; } = false;
+        public bool ManagerDeclined { get; set; } = false;
         public bool Completed { get; set; } = false;
+        public bool Canceled { get; set; } = false;
 
         public string Date { get; set; }
         public string Time { get; set; }
