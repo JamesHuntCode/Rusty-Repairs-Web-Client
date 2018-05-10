@@ -23,41 +23,38 @@
             </div>
         </div>
         <form runat="server">
-            <!-- Booking Data is Appended Here -->
-            <div runat="server" id="appendBookingsHere">
-                <!-- Time and Date of Booking Box -->
-                <div class="input-group mb-3 mt-5 mx-auto" style="width: 50vw">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" style="width: 18vw" id="">Selected Time and Date</span>
-                    </div>
-                    <asp:TextBox ID="time" type="text" class="form-control" runat="server" />
-                    <asp:TextBox ID="date" type="text" class="form-control" runat="server" />
+            <!-- Time and Date of Booking Box -->
+            <div class="input-group mb-3 mt-5 mx-auto" style="width: 50vw">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" style="width: 18vw" id="">Selected Time and Date</span>
                 </div>
-                <!-- Problem Summary Box -->
-                <div class="input-group mb-3 mx-auto" style="width: 50vw">
-                    <div class="input-group-prepend ">
-                        <span class="input-group-text" style="width: 18vw" id="inputGroup-sizing-default">Problem Summary</span>
-                    </div>
-                    <asp:textbox runat="server" ID="problemSummary" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
+                <asp:TextBox ID="time" type="text" class="form-control" runat="server" />
+                <asp:TextBox ID="date" type="text" class="form-control" runat="server" />
+            </div>
+            <!-- Problem Summary Box -->
+            <div class="input-group mb-3 mx-auto" style="width: 50vw">
+                <div class="input-group-prepend ">
+                    <span class="input-group-text" style="width: 18vw" id="inputGroup-sizing-default">Problem Summary</span>
                 </div>
-                <!-- Booking Status Box -->
-                <div class="input-group mb-3 mx-auto" style="width: 50vw">
-                    <div class="input-group-prepend ">
-                        <span class="input-group-text" style="width: 18vw" id="inputGroup-sizing-default2">Booking Status</span>
-                    </div>
-                    <asp:textbox runat="server" ID="status" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
+                <asp:TextBox runat="server" ID="problemSummary" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
+            </div>
+            <!-- Booking Status Box -->
+            <div class="input-group mb-3 mx-auto" style="width: 50vw">
+                <div class="input-group-prepend ">
+                    <span class="input-group-text" style="width: 18vw" id="inputGroup-sizing-default2">Booking Status</span>
                 </div>
+                <asp:TextBox runat="server" ID="status" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
             </div>
             <!-- Buttons for Editing & Deleting Bookings -->
             <div class="row">
                 <div class="col-4">
-                    <asp:Button runat="server" ID="btnUpdate" OnClick="UpdateBooking" type="button" style="width: 20vw" class="btn btn-outline-success btn-lg btn-block mx-auto mt-4" Text="Update Selected Booking" />
+                    <asp:Button runat="server" ID="btnUpdate" OnClick="UpdateBooking" type="button" Style="width: 20vw" class="btn btn-outline-success btn-lg btn-block mx-auto mt-4" Text="Update Booking" />
                 </div>
                 <div class="col-4">
-                    <asp:Button runat="server" ID="btnCancel" OnClick="CancelBooking" type="button" style="width: 20vw" class="btn btn-outline-success btn-lg btn-block mx-auto mt-4" Text="Cancel Selected Booking" />
+                    <asp:Button runat="server" ID="btnCancel" OnClick="CancelBooking" type="button" Style="width: 20vw" class="btn btn-outline-success btn-lg btn-block mx-auto mt-4" Text="Cancel Booking" />
                 </div>
                 <div class="col-4">
-                    <asp:Button runat="server" ID="btnReturnHome" OnClick="ReturnHome" type="button" style="width: 20vw" class="btn btn-outline-success btn-lg btn-block mx-auto mt-4" Text="Return Home" />
+                    <asp:Button runat="server" ID="btnReturnHome" OnClick="ReturnHome" type="button" Style="width: 20vw" class="btn btn-outline-success btn-lg btn-block mx-auto mt-4" Text="Return Home" />
                 </div>
             </div>
         </form>

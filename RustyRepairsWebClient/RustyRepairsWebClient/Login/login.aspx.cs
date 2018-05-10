@@ -27,7 +27,15 @@ public partial class index : System.Web.UI.Page
             Customer cust = this.services.GetAllDetails(userInputEmail + ";" + userInputPassword);
             this.services.SetCurrentCustomerData(cust);
 
-            Server.Transfer("~/CustomerHomepage/customerhomepage.aspx", true);
+            if (cust.HasActiveAccount)
+            {
+                Server.Transfer("~/CustomerHomepage/customerhomepage.aspx", true);
+            }
+            else
+            {
+                // Alert the user their account has been deactivated
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Sorry! That account has been deactivated. Please create a new one.')", true);
+            }
         }
         else
         {

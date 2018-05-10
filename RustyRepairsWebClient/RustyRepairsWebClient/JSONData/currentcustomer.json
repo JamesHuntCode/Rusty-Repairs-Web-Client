@@ -8,20 +8,12 @@
         "BookingID": 1,
         "Pending": true,
         "ManagerApproved": false,
+        "ManagerDeclined": false,
         "Completed": false,
+        "Canceled": false,
         "Date": "24/05/2018",
-        "Time": "9:00",
+        "Time": "10:00",
         "ProblemSummary": "Engine failure."
-      },
-      {
-        "CustomerID": 1,
-        "BookingID": 2,
-        "Pending": false,
-        "ManagerApproved": true,
-        "Completed": true,
-        "Date": "25/03/2018",
-        "Time": "9:00",
-        "ProblemSummary": "Engine leak."
       }
     ],
     "HasMissedBooking": false,
@@ -37,7 +29,7 @@
     ],
     "FirstName": "James",
     "LastName": "Hunt",
-    "EmailAddress": "james@james.com",
+    "EmailAddress": "james@james.co.uk",
     "Password": "example1"
   }
 ]

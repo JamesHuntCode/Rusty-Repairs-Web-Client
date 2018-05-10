@@ -27,7 +27,15 @@ public partial class Customer_Homepage_customerhomepage : System.Web.UI.Page
     {
         if (this.currentCustomer.Vehicles.Count > 0)
         {
-            Server.Transfer("~/CreateBooking/createbooking.aspx", true);
+            if (this.currentCustomer.Bookings.Count == 0)
+            {
+                Server.Transfer("~/CreateBooking/createbooking.aspx", true);
+            }
+            else
+            {
+                // Alert the user they already have a booking
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('You already have an active booking. You cannot request another.')", true);
+            }
         }
         else
         {
