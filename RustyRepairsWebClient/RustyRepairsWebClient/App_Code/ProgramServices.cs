@@ -11,6 +11,7 @@ namespace RustyRepairsWebClient
         private string customerFile = @"~\JSONData\customers.json";
         private string staffFile = @"~\JSONData\staff.json";
         private string currentCustomer = @"~\JSONData\currentcustomer.json";
+        private string workplan = @"~\JSONData\workplan.json";
 
         public ProgramServices()
         {
@@ -128,6 +129,20 @@ namespace RustyRepairsWebClient
             }
 
             return staff;
+        }
+
+        // Method to get all staff data from staff.json
+        public List<Workplan> Getworkplans()
+        {
+            List<Workplan> workplans = new List<Workplan>();
+
+            using (StreamReader SR = new StreamReader(System.Web.Hosting.HostingEnvironment.MapPath(this.workplan)))
+            {
+                string json = SR.ReadToEnd();
+                workplans = JsonConvert.DeserializeObject<List<Workplan>>(json);
+            }
+
+            return workplans;
         }
 
         // Method to see if customer has input valid details

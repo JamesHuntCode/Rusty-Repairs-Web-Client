@@ -9,7 +9,8 @@
         public string EstimatedCompletionDate { get; set; }
         public string ActualCompletionDate { get; set; }
 
-        public Staff AssignedStaffMember { get; set; }
+        public int AssignedStaffMemberID { get; set; }
+        public string Date { get; set; }
 
         public Workplan()
         {
