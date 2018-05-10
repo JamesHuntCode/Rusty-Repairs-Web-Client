@@ -365,5 +365,12 @@ namespace RustyRepairsWebClient
             string updatedCustomerData = JsonConvert.SerializeObject(customers, Formatting.Indented);
             File.WriteAllText(System.Web.Hosting.HostingEnvironment.MapPath(this.customerFile), updatedCustomerData);
         }
+
+        // Method to update workplan related json data
+        private void UpdateWorkplanJSON(List<Workplan> newWorkplans)
+        {
+            string updatedJSON = JsonConvert.SerializeObject(newWorkplans, Formatting.Indented);
+            File.WriteAllText(System.Web.Hosting.HostingEnvironment.MapPath(this.workplan), updatedJSON);
+        }
     }
 }

@@ -70,9 +70,9 @@ public partial class ManagerHomepage_ManagerHomepage : System.Web.UI.Page
 
         List<Workplan> workplans = this.services.Getworkplans();
 
+        TimeSpan timeHours = new TimeSpan(9, 0, 0);
         for (int y = 1; y < 10; y++)
         {
-            TimeSpan timeHours = new TimeSpan(9, 0, 0);
             TableRow tRow = new TableRow();
             this.calenderTable.Rows.Add(tRow);
             for (int x = 0; x < 6; x++)
@@ -94,12 +94,14 @@ public partial class ManagerHomepage_ManagerHomepage : System.Web.UI.Page
                 {
                     if (workplanTime == null)
                     {
-                        addWorkPlan.Attributes.Add("date", this.startOfWeek.AddDays(x - 2).AddHours(timeHours.Hours).ToString());
+                        addWorkPlan.Attributes.Add("date", this.startOfWeek.AddDays(x - 2).Date.ToString());
+                        addWorkPlan.Attributes.Add("row", y.ToString());
                         tCell.Controls.Add(addWorkPlan);
                     }
                     else
                     {
-                        viewWorkplan.Attributes.Add("date", this.startOfWeek.AddDays(x - 2).AddHours(timeHours.Hours).ToString());
+                        viewWorkplan.Attributes.Add("date", this.startOfWeek.AddDays(x - 2).Date.ToString());
+                        viewWorkplan.Attributes.Add("row", y.ToString());
                         tCell.Controls.Add(viewWorkplan);
                     }
                 }
@@ -140,7 +142,9 @@ public partial class ManagerHomepage_ManagerHomepage : System.Web.UI.Page
     {
         Button button = (Button)sender;
 
-        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", string.Format("alert('{0}')", button.Attributes["date"]), true);
+        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", string.Format("alert('{0}-{1}')", button.Attributes["date"], button.Attributes["row"]), true);
+
+
     }
 
     private void viewWorkPlan_Click(object sender, EventArgs e)
