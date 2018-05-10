@@ -56,6 +56,7 @@ public partial class CreateBooking_createbooking : System.Web.UI.Page
         }
     }
 
+    // Method used to fetch data from input boxes
     private string GetBookingData()
     {
         List<string> data = new List<string>();

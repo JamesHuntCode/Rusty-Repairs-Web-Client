@@ -1,22 +1,43 @@
 [
   {
-    "CustomerID": 2,
+    "CustomerID": 1,
     "JoinDate": "04/05/2017",
-    "Bookings": [],
+    "Bookings": [
+      {
+        "CustomerID": 1,
+        "BookingID": 1,
+        "Pending": true,
+        "ManagerApproved": false,
+        "Completed": false,
+        "Date": "24/05/2018",
+        "Time": "9:00",
+        "ProblemSummary": "Engine failure."
+      },
+      {
+        "CustomerID": 1,
+        "BookingID": 2,
+        "Pending": false,
+        "ManagerApproved": true,
+        "Completed": true,
+        "Date": "25/03/2018",
+        "Time": "9:00",
+        "ProblemSummary": "Engine leak."
+      }
+    ],
     "HasMissedBooking": false,
     "HasActiveAccount": true,
     "Vehicles": [
       {
-        "CustomerID": 2,
+        "CustomerID": 1,
         "CarMake": "Audi",
-        "CarModel": "A4",
-        "CarRegistration": "B4LL1N",
-        "OwnerName": "Dominic Need"
+        "CarModel": "R8",
+        "CarRegistration": "123ABC",
+        "OwnerName": "James Hunt"
       }
     ],
-    "FirstName": "Dom",
-    "LastName": "Need",
-    "EmailAddress": "dom@dom.com",
-    "Password": "example2"
+    "FirstName": "James",
+    "LastName": "Hunt",
+    "EmailAddress": "james@james.com",
+    "Password": "example1"
   }
 ]
