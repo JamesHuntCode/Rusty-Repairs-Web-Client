@@ -27,6 +27,12 @@ public partial class CreateBooking_createbooking : System.Web.UI.Page
 
         if ((this.services.DateAndTimeInputsAreValid(bookingData)) && !(bookingData[2].Equals(String.Empty)))
         {
+            if (this.currentCustomer.HasMissedBooking)
+            {
+                // Alert the user they will need to pay upfront if they have missed a previous booking or canceled without enough notice
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Due to your payment history, payment will be taken upfront.')", true);
+            }
+
             Booking newBooking = new Booking();
 
             // Set booking data

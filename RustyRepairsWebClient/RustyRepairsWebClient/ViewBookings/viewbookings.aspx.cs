@@ -73,8 +73,17 @@ public partial class ViewBookings_viewbookings : System.Web.UI.Page
     // Method to allow the user to cancel the selected booking
     public void CancelBooking(object sender, EventArgs e)
     {
-        // CHECK DATES (SET CUSTOMER TO BAD IF THEY CANCEL WITHIN A WEEK)
-        this.currentCustomer.Bookings[this.selectedBookingIndex].Canceled = true;
+        if ((Convert.ToDateTime(this.currentCustomer.Bookings[this.selectedBookingIndex].Date) - DateTime.Now).TotalDays < 2)
+        {
+            // Alert the customer that by doing this, they are becoming a "bad customer"
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Booking cancelled with insufficient notice. Your records have been updated.')", true);
+            this.currentCustomer.HasMissedBooking = true;
+        }
+
+        // Remove booking from customer's JSON data
+        this.currentCustomer.Bookings.Remove(this.currentCustomer.Bookings[this.selectedBookingIndex]);
+        this.services.SetCurrentCustomerData(this.currentCustomer);
+        this.services.UpdateCustomerData(this.currentCustomer);
     }
 
     // Method to allow the user to return home

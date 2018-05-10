@@ -10,7 +10,7 @@
         "ManagerApproved": false,
         "ManagerDeclined": false,
         "Completed": false,
-        "Canceled": false,
+        "Cancelled": false,
         "Date": "24/05/2018",
         "Time": "10:00",
         "ProblemSummary": "Engine failure."
