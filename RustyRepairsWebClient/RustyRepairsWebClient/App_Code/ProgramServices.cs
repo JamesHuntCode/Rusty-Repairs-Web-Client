@@ -357,6 +357,12 @@ namespace RustyRepairsWebClient
             return cust;
         }
 
+        public Booking GetBookingFromWorkplanID(int ID)
+        {
+            Booking booking = this.GetCustomerBookingData().Find(bk => bk.BookingID == ID);
+            return booking;
+        }
+
         // Method to validate date and time combo input when user requests a booking
         public bool DateAndTimeInputsAreValid(string combo)
         {

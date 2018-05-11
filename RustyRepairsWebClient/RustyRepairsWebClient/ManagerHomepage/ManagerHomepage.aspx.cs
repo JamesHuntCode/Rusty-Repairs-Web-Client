@@ -69,7 +69,6 @@ public partial class ManagerHomepage_ManagerHomepage : System.Web.UI.Page
         this.calenderTable.Rows.Add(row);
 
         List<Workplan> workplans = this.services.Getworkplans();
-
         TimeSpan timeHours = new TimeSpan(9, 0, 0);
         for (int y = 1; y < 10; y++)
         {
@@ -89,19 +88,30 @@ public partial class ManagerHomepage_ManagerHomepage : System.Web.UI.Page
 
                 TableCell tCell = new TableCell();
 
-                Workplan workplanTime = workplans.Find(workplan => DateTime.Parse(workplan.Date) == this.startOfWeek.AddDays(x - 1).Date);
                 if (x != 0 && y != 1)
                 {
+                    Workplan workplanTime = workplans.Find(workplan =>
+                    {
+                        Booking booking = this.services.GetBookingFromWorkplanID(workplan.BookingID);
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", string.Format("alert('{0}')", Convert.ToDateTime(@booking.Date).Date), true);
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", string.Format("alert('{0}-{1}[][][]{2}-{3}')", Convert.ToDateTime(@booking.Date).Date, this.startOfWeek.AddDays(x - 1).Date, timeHours.TotalHours.ToString() + ":00", booking.Time), true);
+                        if (DateTime.Parse(workplan.Date).Date == this.startOfWeek.AddDays(x - 1).Date
+                        && timeHours.TotalHours.ToString() + ":00" == booking.Time)
+                            return true;
+
+                        return false;
+                    });
+
                     if (workplanTime == null)
                     {
                         addWorkPlan.Attributes.Add("date", this.startOfWeek.AddDays(x - 2).Date.ToString());
-                        addWorkPlan.Attributes.Add("row", y.ToString());
+                        addWorkPlan.Attributes.Add("time", timeHours.TotalHours.ToString());
                         tCell.Controls.Add(addWorkPlan);
                     }
                     else
                     {
                         viewWorkplan.Attributes.Add("date", this.startOfWeek.AddDays(x - 2).Date.ToString());
-                        viewWorkplan.Attributes.Add("row", y.ToString());
+                        viewWorkplan.Attributes.Add("time", timeHours.TotalHours.ToString());
                         tCell.Controls.Add(viewWorkplan);
                     }
                 }
@@ -141,10 +151,9 @@ public partial class ManagerHomepage_ManagerHomepage : System.Web.UI.Page
     private void AddWorkPlan_Click(object sender, EventArgs e)
     {
         Button button = (Button)sender;
-
-        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", string.Format("alert('{0}-{1}')", button.Attributes["date"], button.Attributes["row"]), true);
-
-
+        DateTime date = DateTime.Parse(button.Attributes["date"].ToString());
+        int hours = int.Parse(button.Attributes["time"].ToString());
+        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", string.Format("alert('{0}-{1}')", date.Date, hours), true);
     }
 
     private void viewWorkPlan_Click(object sender, EventArgs e)
