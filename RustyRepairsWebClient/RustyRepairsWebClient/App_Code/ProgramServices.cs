@@ -108,9 +108,12 @@ namespace RustyRepairsWebClient
             {
                 Customer currentCustomer = customers[i];
 
-                for (int j = 0; j < currentCustomer.Bookings.Count; j++)
+                if (currentCustomer.Bookings != null)
                 {
-                    bookings.Add(currentCustomer.Bookings[j]);
+                    for (int j = 0; j < currentCustomer.Bookings.Count; j++)
+                    {
+                        bookings.Add(currentCustomer.Bookings[j]);
+                    }
                 }
             }
 
@@ -394,6 +397,14 @@ namespace RustyRepairsWebClient
         private bool IsDate(string TheDate)
         {
             return DateTime.TryParse(TheDate, out var validateDate);
+        }
+
+        public bool BookingHasEnoughNotice(string date)
+        {
+            DateTime today = DateTime.Now;
+            DateTime bookingDay = Convert.ToDateTime(date);
+
+            return (bookingDay - today).TotalDays > 2;
         }
 
         // Method to save all data in memory to .json files

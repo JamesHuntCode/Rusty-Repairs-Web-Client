@@ -84,6 +84,9 @@ public partial class ViewBookings_viewbookings : System.Web.UI.Page
         this.currentCustomer.Bookings.Remove(this.currentCustomer.Bookings[this.selectedBookingIndex]);
         this.services.SetCurrentCustomerData(this.currentCustomer);
         this.services.UpdateCustomerData(this.currentCustomer);
+
+        // Send customer back to homepage
+        Server.Transfer("~/CustomerHomepage/customerhomepage.aspx", true);
     }
 
     // Method to allow the user to return home

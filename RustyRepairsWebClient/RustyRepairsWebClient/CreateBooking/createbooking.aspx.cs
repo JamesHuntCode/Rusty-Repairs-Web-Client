@@ -27,33 +27,41 @@ public partial class CreateBooking_createbooking : System.Web.UI.Page
 
         if ((this.services.DateAndTimeInputsAreValid(bookingData)) && !(bookingData[2].Equals(String.Empty)))
         {
-            if (this.currentCustomer.HasMissedBooking)
+            if (this.services.BookingHasEnoughNotice(bookingData.Split(';')[1]))
             {
-                // Alert the user they will need to pay upfront if they have missed a previous booking or canceled without enough notice
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Due to your payment history, payment will be taken upfront.')", true);
+                if (this.currentCustomer.HasMissedBooking)
+                {
+                    // Alert the user they will need to pay upfront if they have missed a previous booking or canceled without enough notice
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Due to your payment history, payment will be taken upfront.')", true);
+                }
+
+                Booking newBooking = new Booking();
+
+                // Set booking data
+                newBooking.CustomerID = this.currentCustomer.CustomerID;
+                newBooking.BookingID = this.services.GetNewBookingID();
+
+                newBooking.Pending = true;
+                newBooking.ManagerApproved = false;
+                newBooking.Completed = false;
+
+                newBooking.Time = bookingData.Split(';')[0];
+                newBooking.Date = bookingData.Split(';')[1];
+                newBooking.ProblemSummary = bookingData.Split(';')[2];
+
+                // Update customer json data
+                this.currentCustomer.Bookings.Add(newBooking);
+                this.services.UpdateCustomerData(this.currentCustomer);
+                this.services.SetCurrentCustomerData(this.currentCustomer);
+
+                // Send user to page where they can view their bookings
+                Server.Transfer("~/ViewBookings/viewbookings.aspx", true);
             }
-
-            Booking newBooking = new Booking();
-
-            // Set booking data
-            newBooking.CustomerID = this.currentCustomer.CustomerID;
-            newBooking.BookingID = this.services.GetNewBookingID();
-
-            newBooking.Pending = true;
-            newBooking.ManagerApproved = false;
-            newBooking.Completed = false;
-
-            newBooking.Time = bookingData.Split(';')[1];
-            newBooking.Date = bookingData.Split(';')[2];
-            newBooking.ProblemSummary = bookingData.Split(';')[3];
-
-            // Update customer json data
-            this.currentCustomer.Bookings.Add(newBooking);
-            this.services.UpdateCustomerData(this.currentCustomer);
-            this.services.SetCurrentCustomerData(this.currentCustomer);
-
-            // Send user to page where they can view their bookings
-            Server.Transfer("~/ViewBookings/viewbooking.aspx", true);
+            else
+            {
+                // Display the booking doesn't have enough notice
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('That time does not allow the garage manager enough notice. Please try again.')", true);
+            }
         }
         else
         {
@@ -71,6 +79,6 @@ public partial class CreateBooking_createbooking : System.Web.UI.Page
         data.Add(Request["date"]);
         data.Add(Request["problemSummary"]);
 
-        return String.Join("", data);
+        return String.Join(";", data);
     }
 }

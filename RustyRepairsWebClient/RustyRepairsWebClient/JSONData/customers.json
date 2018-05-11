@@ -1,7 +1,5 @@
 [
   {
-    "CustomerID": 3,
-    "JoinDate": "04/05/2017",
     "Bookings": [
       {
         "CustomerID": 3,
@@ -16,8 +14,6 @@
         "ProblemSummary": "Smashed Mirror."
       }
     ],
-    "HasMissedBooking": true,
-    "HasActiveAccount": true,
     "Vehicles": [
       {
         "CustomerID": 3,
@@ -27,17 +23,17 @@
         "OwnerName": "Kyle Rusby"
       }
     ],
+    "CustomerID": 3,
+    "JoinDate": "04/05/2017",
+    "HasMissedBooking": true,
+    "HasActiveAccount": true,
     "FirstName": "Kyle",
     "LastName": "Rusby",
     "EmailAddress": "kyle@kyle.com",
     "Password": "example3"
   },
   {
-    "CustomerID": 2,
-    "JoinDate": "04/05/2017",
     "Bookings": [],
-    "HasMissedBooking": false,
-    "HasActiveAccount": true,
     "Vehicles": [
       {
         "CustomerID": 2,
@@ -47,14 +43,16 @@
         "OwnerName": "Dominic Need"
       }
     ],
+    "CustomerID": 2,
+    "JoinDate": "04/05/2017",
+    "HasMissedBooking": false,
+    "HasActiveAccount": true,
     "FirstName": "Dom",
     "LastName": "Need",
     "EmailAddress": "dom@dom.com",
     "Password": "example2"
   },
   {
-    "CustomerID": 1,
-    "JoinDate": "04/05/2017",
     "Bookings": [
       {
         "CustomerID": 1,
@@ -69,8 +67,6 @@
         "ProblemSummary": "Engine failure."
       }
     ],
-    "HasMissedBooking": false,
-    "HasActiveAccount": true,
     "Vehicles": [
       {
         "CustomerID": 1,
@@ -80,9 +76,105 @@
         "OwnerName": "James Hunt"
       }
     ],
+    "CustomerID": 1,
+    "JoinDate": "04/05/2017",
+    "HasMissedBooking": false,
+    "HasActiveAccount": true,
     "FirstName": "James",
     "LastName": "Hunt",
     "EmailAddress": "james@james.co.uk",
     "Password": "example1"
+  },
+  {
+    "Bookings": null,
+    "Vehicles": null,
+    "CustomerID": 4,
+    "JoinDate": "11/05/2018",
+    "HasMissedBooking": false,
+    "HasActiveAccount": false,
+    "FirstName": "Kylie",
+    "LastName": "Rosberry",
+    "EmailAddress": "kylie@gmail.com",
+    "Password": "password"
+  },
+  {
+    "Bookings": [],
+    "Vehicles": [
+      {
+        "CustomerID": 5,
+        "CarMake": "Lambo",
+        "CarModel": "Aventador",
+        "CarRegistration": "123ABC",
+        "OwnerName": "James Hunt"
+      }
+    ],
+    "CustomerID": 5,
+    "JoinDate": "11/05/2018",
+    "HasMissedBooking": false,
+    "HasActiveAccount": false,
+    "FirstName": "Jimmy",
+    "LastName": "William",
+    "EmailAddress": "test@gmail.com",
+    "Password": "password"
+  },
+  {
+    "Bookings": [],
+    "Vehicles": [
+      {
+        "CustomerID": 6,
+        "CarMake": "Some",
+        "CarModel": "Car",
+        "CarRegistration": "PU55Y",
+        "OwnerName": "Dominic Need"
+      }
+    ],
+    "CustomerID": 6,
+    "JoinDate": "11/05/2018",
+    "HasMissedBooking": false,
+    "HasActiveAccount": false,
+    "FirstName": "Dominic",
+    "LastName": "Creampie",
+    "EmailAddress": "beast@gmail.com",
+    "Password": "password"
+  },
+  {
+    "Bookings": [],
+    "Vehicles": [
+      {
+        "CustomerID": 7,
+        "CarMake": "Ford",
+        "CarModel": "Mustang",
+        "CarRegistration": "123ABC",
+        "OwnerName": "Pedr0 R0D"
+      }
+    ],
+    "CustomerID": 7,
+    "JoinDate": "11/05/2018",
+    "HasMissedBooking": false,
+    "HasActiveAccount": false,
+    "FirstName": "Pedro",
+    "LastName": "Rod",
+    "EmailAddress": "ped@gmail.com",
+    "Password": "ped1"
+  },
+  {
+    "Bookings": [],
+    "Vehicles": [
+      {
+        "CustomerID": 7,
+        "CarMake": "Ford",
+        "CarModel": "Mustang",
+        "CarRegistration": "123ABC",
+        "OwnerName": "Pedr0 R0D"
+      }
+    ],
+    "CustomerID": 7,
+    "JoinDate": "11/05/2018",
+    "HasMissedBooking": false,
+    "HasActiveAccount": false,
+    "FirstName": "Pedro",
+    "LastName": "Rod",
+    "EmailAddress": "ped@gmail.com",
+    "Password": "ped1"
   }
 ]

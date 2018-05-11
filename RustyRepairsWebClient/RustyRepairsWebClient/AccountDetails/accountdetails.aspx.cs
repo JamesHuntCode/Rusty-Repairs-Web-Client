@@ -112,7 +112,15 @@ public partial class Account_Details_accountdetails : System.Web.UI.Page
 
     // Method to send user to page where they can view their vehicle details
     public void ViewVehicleDetails(object sender, EventArgs e)
-    {
-        Server.Transfer("~/ViewVehicle/viewvehicle.aspx", true);
+    {   
+        if ((this.currentCustomer.Vehicles.Count) > 0 && !(this.currentCustomer.Bookings == null))
+        {
+            Server.Transfer("~/ViewVehicle/viewvehicle.aspx", true);
+        }
+        else
+        {
+            // Alert the user that they do not have a registered vehicle on their account
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('You don't have a registered vehicle. Pleade add one to your account.')", true);
+        }
     }
 }
