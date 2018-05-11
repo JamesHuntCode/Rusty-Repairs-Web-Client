@@ -9,12 +9,12 @@ namespace RustyRepairsWebClient
 
         public string JoinDate { get; set; }
 
-        public List<Booking> Bookings { get; set; }
+        public List<Booking> Bookings = new List<Booking>();
 
         public bool HasMissedBooking { get; set; }
         public bool HasActiveAccount { get; set; }
 
-        public List<Vehicle> Vehicles { get; set; }
+        public List<Vehicle> Vehicles = new List<Vehicle>();
 
         public Customer()
         {

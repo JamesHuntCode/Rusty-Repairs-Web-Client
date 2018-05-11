@@ -1,35 +1,22 @@
 [
   {
-    "CustomerID": 1,
-    "JoinDate": "04/05/2017",
-    "Bookings": [
-      {
-        "CustomerID": 1,
-        "BookingID": 1,
-        "Pending": true,
-        "ManagerApproved": false,
-        "ManagerDeclined": false,
-        "Completed": false,
-        "Cancelled": false,
-        "Date": "24/05/2018",
-        "Time": "10:00",
-        "ProblemSummary": "Engine failure."
-      }
-    ],
-    "HasMissedBooking": false,
-    "HasActiveAccount": true,
+    "Bookings": [],
     "Vehicles": [
       {
-        "CustomerID": 1,
-        "CarMake": "Audi",
-        "CarModel": "R8",
+        "CustomerID": 7,
+        "CarMake": "Ford",
+        "CarModel": "Mustang",
         "CarRegistration": "123ABC",
-        "OwnerName": "James Hunt"
+        "OwnerName": "Pedr0 R0D"
       }
     ],
-    "FirstName": "James",
-    "LastName": "Hunt",
-    "EmailAddress": "james@james.co.uk",
-    "Password": "example1"
+    "CustomerID": 7,
+    "JoinDate": "11/05/2018",
+    "HasMissedBooking": false,
+    "HasActiveAccount": false,
+    "FirstName": "Pedro",
+    "LastName": "Rod",
+    "EmailAddress": "ped@gmail.com",
+    "Password": "ped1"
   }
 ]
