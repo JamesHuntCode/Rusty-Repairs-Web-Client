@@ -23,8 +23,8 @@ public partial class index : System.Web.UI.Page
 
         if ((userInputEmail == "ADMIN") && (userInputPassword == "ADMIN"))
         {
-            // Send Garage Manager to their homepage
-            Server.Transfer("~/ManagerHomepage/ManagerHomepage.aspx", true);
+            // Send Garage Manager (ADMIN) to their homepage
+            Response.Redirect("~/ManagerHomepage/ManagerHomepage.aspx");
         }
         else if (this.services.LoginDetailsCorrect(userInputEmail, userInputPassword))
         {

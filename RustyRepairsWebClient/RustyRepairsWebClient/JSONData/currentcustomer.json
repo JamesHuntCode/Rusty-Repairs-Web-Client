@@ -2,34 +2,34 @@
   {
     "Bookings": [
       {
-        "CustomerID": 3,
-        "BookingID": 3,
-        "Pending": false,
+        "CustomerID": 13,
+        "BookingID": 5,
+        "Pending": true,
         "ManagerApproved": false,
-        "ManagerDeclined": true,
-        "Completed": true,
+        "ManagerDeclined": false,
+        "Completed": false,
         "Cancelled": false,
-        "Date": "23/05/2018",
-        "Time": "9:00",
-        "ProblemSummary": "cannot drive car plz help"
+        "Date": "24/06/2018",
+        "Time": "15:00",
+        "ProblemSummary": "cannot drive my vehicle up a hill plz help tim"
       }
     ],
     "Vehicles": [
       {
-        "CustomerID": 3,
-        "CarMake": "Porche",
-        "CarModel": "911",
-        "CarRegistration": "123ABC",
-        "OwnerName": "Kyle Rusby"
+        "CustomerID": 13,
+        "CarMake": "tim",
+        "CarModel": "tim",
+        "CarRegistration": "timmy",
+        "OwnerName": "ned"
       }
     ],
-    "CustomerID": 3,
-    "JoinDate": "04/05/2017",
-    "HasMissedBooking": true,
+    "CustomerID": 13,
+    "JoinDate": "12/05/2018",
+    "HasMissedBooking": false,
     "HasActiveAccount": false,
-    "FirstName": "Kyle",
-    "LastName": "Rusby",
-    "EmailAddress": "kyle@kyle.com",
-    "Password": "example3"
+    "FirstName": "Tim",
+    "LastName": "Ned",
+    "EmailAddress": "ned@tim.co",
+    "Password": "pass1"
   }
 ]

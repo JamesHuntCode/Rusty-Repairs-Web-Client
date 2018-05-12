@@ -1,11 +1,10 @@
 [
   {
-<<<<<<< HEAD
     "Bookings": [
       {
         "CustomerID": 3,
         "BookingID": 3,
-        "Pending": true,
+        "Pending": false,
         "ManagerApproved": false,
         "ManagerDeclined": true,
         "Completed": false,
@@ -34,8 +33,6 @@
     "Password": "example3"
   },
   {
-=======
->>>>>>> aa0d7c9655cc91baf3886a170fff3a552544c1ec
     "Bookings": [],
     "Vehicles": [
       {
@@ -181,6 +178,7 @@
     "Password": "ped1"
   },
   {
+    "Bookings": [],
     "Vehicles": [
       {
         "CustomerID": 9,
@@ -207,11 +205,11 @@
         "Pending": false,
         "ManagerApproved": false,
         "ManagerDeclined": true,
-        "Completed": true,
+        "Completed": false,
         "Cancelled": false,
-        "Date": "23/05/2018",
-        "Time": "9:00",
-        "ProblemSummary": "cannot drive car plz help"
+        "Date": "12/06/2018",
+        "Time": "17:26",
+        "ProblemSummary": ""
       }
     ],
     "Vehicles": [
@@ -240,11 +238,11 @@
         "Pending": false,
         "ManagerApproved": false,
         "ManagerDeclined": true,
-        "Completed": true,
+        "Completed": false,
         "Cancelled": false,
-        "Date": "23/05/2018",
-        "Time": "9:00",
-        "ProblemSummary": "cannot drive car plz help"
+        "Date": "12/06/2018",
+        "Time": "17:26",
+        "ProblemSummary": ""
       }
     ],
     "Vehicles": [
@@ -266,6 +264,7 @@
     "Password": "example3"
   },
   {
+    "Bookings": [],
     "Vehicles": [
       {
         "CustomerID": 3,
@@ -283,5 +282,38 @@
     "LastName": "Rusby",
     "EmailAddress": "kyle@kyle.com",
     "Password": "example3"
+  },
+  {
+    "Bookings": [
+      {
+        "CustomerID": 13,
+        "BookingID": 5,
+        "Pending": true,
+        "ManagerApproved": false,
+        "ManagerDeclined": false,
+        "Completed": false,
+        "Cancelled": false,
+        "Date": "24/06/2018",
+        "Time": "15:00",
+        "ProblemSummary": "cannot drive my vehicle up a hill plz help tim"
+      }
+    ],
+    "Vehicles": [
+      {
+        "CustomerID": 13,
+        "CarMake": "tim",
+        "CarModel": "tim",
+        "CarRegistration": "timmy",
+        "OwnerName": "ned"
+      }
+    ],
+    "CustomerID": 13,
+    "JoinDate": "12/05/2018",
+    "HasMissedBooking": false,
+    "HasActiveAccount": false,
+    "FirstName": "Tim",
+    "LastName": "Ned",
+    "EmailAddress": "ned@tim.co",
+    "Password": "pass1"
   }
 ]
