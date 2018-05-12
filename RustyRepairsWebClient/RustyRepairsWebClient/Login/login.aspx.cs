@@ -21,7 +21,12 @@ public partial class index : System.Web.UI.Page
         string userInputEmail = this.inputEmail.Text;
         string userInputPassword = this.inputPassword.Text;
 
-        if (this.services.LoginDetailsCorrect(userInputEmail, userInputPassword))
+        if ((userInputEmail == "ADMIN") && (userInputPassword == "ADMIN"))
+        {
+            // Send Garage Manager to their homepage
+            Server.Transfer("~/ManagerHomepage/ManagerHomepage.aspx", true);
+        }
+        else if (this.services.LoginDetailsCorrect(userInputEmail, userInputPassword))
         {
             // Log user into account
             Customer cust = this.services.GetAllDetails(userInputEmail + ";" + userInputPassword);
