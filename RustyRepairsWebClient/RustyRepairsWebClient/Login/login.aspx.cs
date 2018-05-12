@@ -34,7 +34,7 @@ public partial class index : System.Web.UI.Page
 
             if (cust.HasActiveAccount)
             {
-                
+                // Log customer into their account
                 Server.Transfer("~/CustomerHomepage/customerhomepage.aspx", true);
             }
             else

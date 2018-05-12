@@ -97,9 +97,14 @@ public partial class Customer_Homepage_customerhomepage : System.Web.UI.Page
     {
         if (!(this.currentCustomer.HasUpcomingBooking() && !(this.currentCustomer.HasMissedBooking)))
         {
+            // Alert the user that their account is being deleted
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Your account is being deleted. This action is not reversible.')", true);
+
             // Set account status to deactive & update.json data
             this.currentCustomer.HasActiveAccount = false;
-            this.services.WriteJSON(this.currentCustomer, null);
+
+            this.services.SetCurrentCustomerData(this.currentCustomer);
+            this.services.UpdateCustomerData(this.currentCustomer);
 
             // Send the customer back to the login page
             Server.Transfer("~/Login/login.aspx", true);

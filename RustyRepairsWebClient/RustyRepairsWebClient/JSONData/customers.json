@@ -1,5 +1,6 @@
 [
   {
+<<<<<<< HEAD
     "Bookings": [
       {
         "CustomerID": 3,
@@ -33,6 +34,8 @@
     "Password": "example3"
   },
   {
+=======
+>>>>>>> aa0d7c9655cc91baf3886a170fff3a552544c1ec
     "Bookings": [],
     "Vehicles": [
       {
@@ -195,5 +198,90 @@
     "LastName": "Jimsworth",
     "EmailAddress": "jim@jim.com",
     "Password": "password"
+  },
+  {
+    "Bookings": [
+      {
+        "CustomerID": 3,
+        "BookingID": 3,
+        "Pending": false,
+        "ManagerApproved": false,
+        "ManagerDeclined": true,
+        "Completed": true,
+        "Cancelled": false,
+        "Date": "23/05/2018",
+        "Time": "9:00",
+        "ProblemSummary": "cannot drive car plz help"
+      }
+    ],
+    "Vehicles": [
+      {
+        "CustomerID": 3,
+        "CarMake": "Porche",
+        "CarModel": "911",
+        "CarRegistration": "123ABC",
+        "OwnerName": "Kyle Rusby"
+      }
+    ],
+    "CustomerID": 3,
+    "JoinDate": "04/05/2017",
+    "HasMissedBooking": true,
+    "HasActiveAccount": false,
+    "FirstName": "Kyle",
+    "LastName": "Rusby",
+    "EmailAddress": "kyle@kyle.com",
+    "Password": "example3"
+  },
+  {
+    "Bookings": [
+      {
+        "CustomerID": 3,
+        "BookingID": 3,
+        "Pending": false,
+        "ManagerApproved": false,
+        "ManagerDeclined": true,
+        "Completed": true,
+        "Cancelled": false,
+        "Date": "23/05/2018",
+        "Time": "9:00",
+        "ProblemSummary": "cannot drive car plz help"
+      }
+    ],
+    "Vehicles": [
+      {
+        "CustomerID": 3,
+        "CarMake": "Porche",
+        "CarModel": "911",
+        "CarRegistration": "123ABC",
+        "OwnerName": "Kyle Rusby"
+      }
+    ],
+    "CustomerID": 3,
+    "JoinDate": "04/05/2017",
+    "HasMissedBooking": true,
+    "HasActiveAccount": false,
+    "FirstName": "Kyle",
+    "LastName": "Rusby",
+    "EmailAddress": "kyle@kyle.com",
+    "Password": "example3"
+  },
+  {
+    "Vehicles": [
+      {
+        "CustomerID": 3,
+        "CarMake": "Porche",
+        "CarModel": "911",
+        "CarRegistration": "123ABC",
+        "OwnerName": "Kyle Rusby"
+      }
+    ],
+    "CustomerID": 3,
+    "JoinDate": "04/05/2017",
+    "HasMissedBooking": true,
+    "HasActiveAccount": false,
+    "FirstName": "Kyle",
+    "LastName": "Rusby",
+    "EmailAddress": "kyle@kyle.com",
+    "Password": "example3"
   }
 ]
