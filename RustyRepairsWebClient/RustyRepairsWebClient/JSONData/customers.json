@@ -4,14 +4,14 @@
       {
         "CustomerID": 3,
         "BookingID": 3,
-        "Pending": false,
+        "Pending": true,
         "ManagerApproved": false,
         "ManagerDeclined": true,
-        "Completed": true,
+        "Completed": false,
         "Cancelled": false,
-        "Date": "23/05/2018",
-        "Time": "9:00",
-        "ProblemSummary": "cannot drive car plz help"
+        "Date": "12/06/2018",
+        "Time": "17:26",
+        "ProblemSummary": ""
       }
     ],
     "Vehicles": [
@@ -178,20 +178,6 @@
     "Password": "ped1"
   },
   {
-    "Bookings": [
-      {
-        "CustomerID": 9,
-        "BookingID": 3,
-        "Pending": true,
-        "ManagerApproved": false,
-        "ManagerDeclined": false,
-        "Completed": false,
-        "Cancelled": false,
-        "Date": "12/06/2018",
-        "Time": "17:26",
-        "ProblemSummary": "check up"
-      }
-    ],
     "Vehicles": [
       {
         "CustomerID": 9,

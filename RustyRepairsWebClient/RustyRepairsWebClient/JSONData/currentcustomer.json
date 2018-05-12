@@ -2,7 +2,7 @@
   {
     "Bookings": [
       {
-        "CustomerID": 9,
+        "CustomerID": 3,
         "BookingID": 3,
         "Pending": true,
         "ManagerApproved": false,

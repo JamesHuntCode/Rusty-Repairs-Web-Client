@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Rusty's Repairs - Admin Panel</title>
     <link rel="shortcut icon" type="image/x-icon" href="~/images/favicon.png" />
 
     <!-- LINKS TO ALL CSS FILES & CDN's -->
@@ -105,7 +105,7 @@
                     <div class="row mt-3 text-center">
                         <div class="col">
                             <h1>Staff</h1>
-                            <asp:ListBox ID="lstStaff" OnSelectedIndexChanged="lstBookings_SelectedIndexChanged" Style="text-align: center; font-size: 24px;" runat="server" Width="100%" Rows="6"></asp:ListBox>
+                            <asp:ListBox ID="lstStaff" Style="text-align: center; font-size: 24px;" runat="server" Width="100%" Rows="6"></asp:ListBox>
                         </div>
                     </div>
                     <div class="row mt-3 text-center">

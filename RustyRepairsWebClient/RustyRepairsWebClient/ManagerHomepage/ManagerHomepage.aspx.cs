@@ -20,6 +20,8 @@ public partial class ManagerHomepage_ManagerHomepage : System.Web.UI.Page
         this.services = new ProgramServices();
         this.bookings = services.GetCustomerBookingData().Where(booking => booking.Pending).ToList();
         this.staffMembers = this.services.GetStaffData();
+        this.btnDeclineBooking.Click += BtnDeclineBooking_Click;
+
         if (!IsPostBack)
         {
             foreach (Booking booking in this.bookings)
@@ -34,7 +36,7 @@ public partial class ManagerHomepage_ManagerHomepage : System.Web.UI.Page
         }
 
         this.lstBookings.Attributes.Add("ondblclick", ClientScript.GetPostBackEventReference(this.lstBookings, "move"));
-        this.lstStaff.Attributes.Add("ondblclick", ClientScript.GetPostBackEventReference(this.lstStaff, "move2"));
+        this.lstStaff.Attributes.Add("ondblclick", ClientScript.GetPostBackEventReference(this.lstStaff, "move"));
 
         if (ViewState["date"] != null)
         {
@@ -49,6 +51,19 @@ public partial class ManagerHomepage_ManagerHomepage : System.Web.UI.Page
         }
 
         this.drawTable();
+    }
+
+    private void BtnDeclineBooking_Click(object sender, EventArgs e)
+    {
+        int index = this.lstBookings.SelectedIndex;
+        if (index < 0 || index > this.bookings.Count)
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Please select a booking')", true);
+            return;
+        }
+        Booking booking = this.bookings[index];
+        this.services.UpdateBooking("NAH", booking);
+        Response.Redirect(Request.RawUrl);
     }
 
     private void NextWeek_Click(object sender, EventArgs e)
@@ -84,11 +99,6 @@ public partial class ManagerHomepage_ManagerHomepage : System.Web.UI.Page
             this.calenderTable.Rows.Add(tRow);
             for (int x = 0; x < 6; x++)
             {
-                //Button addWorkPlan = new Button();
-                //addWorkPlan.Click += AddWorkPlan_Click;
-                //addWorkPlan.CssClass = "btn-success";
-                //addWorkPlan.Text = "Allocate";
-
                 TableCell tCell = new TableCell();
 
                 if (x != 0 && y != 1)
@@ -100,10 +110,6 @@ public partial class ManagerHomepage_ManagerHomepage : System.Web.UI.Page
 
                         return false;
                         });
-
-                    //Booking booking = null;
-                    //if (workplanTime != null)
-                    //    booking = this.services.GetBookingFromWorkplan(workplanTime);
 
                     Button btnCell = new Button();
                     if (workplanTime != null)
@@ -159,19 +165,6 @@ public partial class ManagerHomepage_ManagerHomepage : System.Web.UI.Page
             this.calenderTable.Rows[y].Cells[0].Text = (time.Hours + ":00 - " + (time.Hours + 1) + ":00").ToString();
             time = time.Add(new TimeSpan(1, 0, 0));
         }
-    }
-
-    private void btnDeclineBooking_Click(object sender, EventArgs e)
-    {
-        int index = this.lstBookings.SelectedIndex;
-        if (index < 0 || index > this.bookings.Count)
-        {
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Please select a booking')", true);
-            return;
-        }
-        Booking booking = this.bookings[index];
-        this.services.UpdateBooking("NAH", booking);
-        Response.Redirect(Request.RawUrl);
     }
 
     private void AddWorkPlan_Click(object sender, EventArgs e)
