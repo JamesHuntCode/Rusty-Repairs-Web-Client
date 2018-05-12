@@ -34,7 +34,7 @@ public partial class ManagerHomepage_ManagerHomepage : System.Web.UI.Page
         }
 
         this.lstBookings.Attributes.Add("ondblclick", ClientScript.GetPostBackEventReference(this.lstBookings, "move"));
-        this.lstStaff.Attributes.Add("ondblclick", ClientScript.GetPostBackEventReference(this.lstStaff, "move"));
+        this.lstStaff.Attributes.Add("ondblclick", ClientScript.GetPostBackEventReference(this.lstStaff, "move2"));
 
         if (ViewState["date"] != null)
         {
