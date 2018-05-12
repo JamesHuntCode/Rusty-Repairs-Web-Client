@@ -63,7 +63,7 @@ public partial class ManagerHomepage_ManagerHomepage : System.Web.UI.Page
         }
         Booking booking = this.bookings[index];
         this.services.UpdateBooking("NAH", booking);
-        Response.Redirect(Request.RawUrl);
+        Response.Redirect("~/ManagerHomepage/ManagerHomepage.aspx", true);
     }
 
     private void NextWeek_Click(object sender, EventArgs e)
