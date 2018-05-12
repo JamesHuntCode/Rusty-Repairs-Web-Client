@@ -2,34 +2,34 @@
   {
     "Bookings": [
       {
-        "CustomerID": 9,
+        "CustomerID": 3,
         "BookingID": 3,
-        "Pending": true,
+        "Pending": false,
         "ManagerApproved": false,
-        "ManagerDeclined": false,
-        "Completed": false,
+        "ManagerDeclined": true,
+        "Completed": true,
         "Cancelled": false,
-        "Date": "12/06/2018",
-        "Time": "17:26",
-        "ProblemSummary": "check up"
+        "Date": "23/05/2018",
+        "Time": "9:00",
+        "ProblemSummary": "cannot drive car plz help"
       }
     ],
     "Vehicles": [
       {
-        "CustomerID": 9,
-        "CarMake": "ford",
-        "CarModel": "thing",
-        "CarRegistration": "PU55Y",
-        "OwnerName": "Jim Jim"
+        "CustomerID": 3,
+        "CarMake": "Porche",
+        "CarModel": "911",
+        "CarRegistration": "123ABC",
+        "OwnerName": "Kyle Rusby"
       }
     ],
-    "CustomerID": 9,
-    "JoinDate": "12/05/2018",
-    "HasMissedBooking": false,
+    "CustomerID": 3,
+    "JoinDate": "04/05/2017",
+    "HasMissedBooking": true,
     "HasActiveAccount": false,
-    "FirstName": "Jimmy",
-    "LastName": "Jimsworth",
-    "EmailAddress": "jim@jim.com",
-    "Password": "password"
+    "FirstName": "Kyle",
+    "LastName": "Rusby",
+    "EmailAddress": "kyle@kyle.com",
+    "Password": "example3"
   }
 ]
