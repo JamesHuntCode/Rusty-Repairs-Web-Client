@@ -211,7 +211,7 @@ public partial class ManagerHomepage_ManagerHomepage : System.Web.UI.Page
         };
         this.services.UpdateBooking("Approve", booking);
         this.services.UpdateWorkplans(false, workplan);
-        Response.Redirect(Request.RawUrl);
+        Response.Redirect("~/ManagerHomepage/ManagerHomepage.aspx", true);
     }
 
     private void viewWorkPlan_Click(object sender, EventArgs e)
