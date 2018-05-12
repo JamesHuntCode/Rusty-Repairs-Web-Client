@@ -198,6 +198,18 @@ namespace RustyRepairsWebClient
             return newID;
         }
 
+        // Method to assign a new workplan ID
+        public int GetNewWorkPlanID()
+        {
+            int newID = 0;
+
+            List<Workplan> workplans = this.Getworkplans();
+
+            newID = workplans.Count + 1;
+
+            return newID;
+        }
+
         // Method to see if customer account already exists
         public bool AlreadyExists(string data, bool updating)
         {
@@ -280,8 +292,33 @@ namespace RustyRepairsWebClient
             this.UpdateJSON(customers);
         }
 
+        public void UpdateWorkplans(bool remove, Workplan workplan)
+        {
+            List<Workplan> workplans = this.Getworkplans();
+
+            if (remove)
+            {
+                Workplan wp = workplans.Find(w => w.WorkPlanID == workplan.WorkPlanID);
+                if (wp == null)
+                    return;
+
+                Booking booking = this.GetBookingFromWorkplan(wp);
+                booking.Pending = true;
+                booking.ManagerApproved = false;
+                booking.ManagerDeclined = false;
+                this.UpdateBooking("update", booking);
+                workplans.Remove(wp);
+                this.UpdateWorkplanJSON(workplans);
+                return;
+            }
+
+            workplans.Add(workplan);
+
+            this.UpdateWorkplanJSON(workplans);
+        }
+
         // Method to allow the garage manager to decline or approve bookings
-        public void UpdateBooking(string action, Booking booking)
+        public void UpdateBooking(string action, Booking booking, string newProblem="")
         {
             Booking bookingToBeChanged = booking;
             List<Customer> customers = this.GetCustomerData();
@@ -291,11 +328,35 @@ namespace RustyRepairsWebClient
                 // Update properties
                 bookingToBeChanged.ManagerApproved = true;
                 bookingToBeChanged.ManagerDeclined = false;
-                booking.Pending = false;
+                bookingToBeChanged.Pending = false;
 
                 // Save JSON data
                 for (int i = 0; i < customers.Count; i++)
                 {
+                    for (int j = 0; j < customers[i].Bookings.Count; j++)
+                    {
+                        Booking currentBookingInLoop = customers[i].Bookings[j];
+
+                        if (bookingToBeChanged.BookingID == currentBookingInLoop.BookingID)
+                        {
+                            customers[i].Bookings.Remove(currentBookingInLoop);
+                            customers[i].Bookings.Add(bookingToBeChanged);
+                            break;
+                        }
+                    }
+                }
+
+                this.UpdateJSON(customers);
+            }
+            else if(action == "update")
+            {
+                bookingToBeChanged.ProblemSummary = newProblem;
+                // Save JSON data
+                for (int i = 0; i < customers.Count; i++)
+                {
+                    if (customers[i].Bookings == null)
+                        continue;
+
                     for (int j = 0; j < customers[i].Bookings.Count; j++)
                     {
                         Booking currentBookingInLoop = customers[i].Bookings[j];
@@ -321,6 +382,9 @@ namespace RustyRepairsWebClient
                 // Save JSON data
                 for (int i = 0; i < customers.Count; i++)
                 {
+                    if (customers[i].Bookings == null)
+                        continue;
+
                     for (int j = 0; j < customers[i].Bookings.Count; j++)
                     {
                         Booking currentBookingInLoop = customers[i].Bookings[j];
@@ -347,6 +411,9 @@ namespace RustyRepairsWebClient
 
             for (int i = 0; i < customers.Count; i++)
             {
+                if (customers[i].Bookings == null)
+                    continue;
+
                 for (int j = 0; j < customers[i].Bookings.Count; j++)
                 {
                     if (ID == customers[i].Bookings[j].BookingID)
@@ -360,10 +427,9 @@ namespace RustyRepairsWebClient
             return cust;
         }
 
-        public Booking GetBookingFromWorkplanID(int ID)
+        public Booking GetBookingFromWorkplan(Workplan workplan)
         {
-            Booking booking = this.GetCustomerBookingData().Find(bk => bk.BookingID == ID);
-            return booking;
+            return this.GetCustomerBookingData().Find(bk => bk.BookingID == workplan.BookingID);             
         }
 
         // Method to validate date and time combo input when user requests a booking

@@ -12,13 +12,14 @@ public partial class ManagerHomepage_ManagerHomepage : System.Web.UI.Page
     private ProgramServices services;
     private List<Booking> bookings;
     private DateTime startOfWeek;
-
+    private List<Staff> staffMembers;
 
     protected void Page_Load(object sender, EventArgs e)
     {
         //I hate James' code
         this.services = new ProgramServices();
-        this.bookings = services.GetCustomerBookingData().Where(booking => !booking.ManagerApproved).ToList();
+        this.bookings = services.GetCustomerBookingData().Where(booking => booking.Pending).ToList();
+        this.staffMembers = this.services.GetStaffData();
         if (!IsPostBack)
         {
             foreach (Booking booking in this.bookings)
@@ -26,7 +27,14 @@ public partial class ManagerHomepage_ManagerHomepage : System.Web.UI.Page
                 Customer cust = this.services.GetCustomerDataFromBookingID(booking.BookingID);
                 this.lstBookings.Items.Add(string.Format("{0}: {1}", cust.FirstName + " " + cust.LastName, booking.Date));
             }
+            foreach (Staff staff in this.staffMembers)
+            {
+                this.lstStaff.Items.Add(string.Format("{0}: {1}", staff.FirstName + " " + staff.LastName, staff.ID));
+            }
         }
+
+        this.lstBookings.Attributes.Add("ondblclick", ClientScript.GetPostBackEventReference(this.lstBookings, "move"));
+        this.lstStaff.Attributes.Add("ondblclick", ClientScript.GetPostBackEventReference(this.lstStaff, "move"));
 
         if (ViewState["date"] != null)
         {
@@ -69,51 +77,56 @@ public partial class ManagerHomepage_ManagerHomepage : System.Web.UI.Page
         this.calenderTable.Rows.Add(row);
 
         List<Workplan> workplans = this.services.Getworkplans();
-        TimeSpan timeHours = new TimeSpan(9, 0, 0);
+        TimeSpan timeHours = new TimeSpan(8, 0, 0);
         for (int y = 1; y < 10; y++)
         {
             TableRow tRow = new TableRow();
             this.calenderTable.Rows.Add(tRow);
             for (int x = 0; x < 6; x++)
             {
-                Button viewWorkplan = new Button();
-                viewWorkplan.Click += viewWorkPlan_Click;
-                viewWorkplan.CssClass = "btn-warning";
-                viewWorkplan.Text = "View";
-
-                Button addWorkPlan = new Button();
-                addWorkPlan.Click += AddWorkPlan_Click;
-                addWorkPlan.CssClass = "btn-success";
-                addWorkPlan.Text = "Allocate";
+                //Button addWorkPlan = new Button();
+                //addWorkPlan.Click += AddWorkPlan_Click;
+                //addWorkPlan.CssClass = "btn-success";
+                //addWorkPlan.Text = "Allocate";
 
                 TableCell tCell = new TableCell();
 
                 if (x != 0 && y != 1)
                 {
-                    Workplan workplanTime = workplans.Find(workplan =>
-                    {
-                        Booking booking = this.services.GetBookingFromWorkplanID(workplan.BookingID);
-                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", string.Format("alert('{0}')", Convert.ToDateTime(@booking.Date).Date), true);
-                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", string.Format("alert('{0}-{1}[][][]{2}-{3}')", Convert.ToDateTime(@booking.Date).Date, this.startOfWeek.AddDays(x - 1).Date, timeHours.TotalHours.ToString() + ":00", booking.Time), true);
-                        if (DateTime.Parse(workplan.Date).Date == this.startOfWeek.AddDays(x - 1).Date
-                        && timeHours.TotalHours.ToString() + ":00" == booking.Time)
+                    Workplan workplanTime = workplans.Find(workplan => {
+                        if (DateTime.Parse(workplan.Date) == this.startOfWeek.AddDays(x - 1).Date &&
+                            (timeHours.TotalHours).ToString() + ":00" == workplan.Time)
                             return true;
 
                         return false;
-                    });
+                        });
 
-                    if (workplanTime == null)
+                    //Booking booking = null;
+                    //if (workplanTime != null)
+                    //    booking = this.services.GetBookingFromWorkplan(workplanTime);
+
+                    Button btnCell = new Button();
+                    if (workplanTime != null)
                     {
-                        addWorkPlan.Attributes.Add("date", this.startOfWeek.AddDays(x - 2).Date.ToString());
-                        addWorkPlan.Attributes.Add("time", timeHours.TotalHours.ToString());
-                        tCell.Controls.Add(addWorkPlan);
+                        btnCell.Attributes.Add("date", this.startOfWeek.AddDays(x - 1).Date.ToString());
+                        btnCell.Attributes.Add("time", (timeHours.TotalHours).ToString());
+                        btnCell.Attributes.Add("workplanID", workplanTime.WorkPlanID.ToString());
+                        btnCell.Attributes.Add("bookingID", workplanTime.BookingID.ToString());
+                        btnCell.Attributes.Add("staffID", workplanTime.AssignedStaffMemberID.ToString());
+                        btnCell.Click += viewWorkPlan_Click;
+                        btnCell.CssClass = "btn-warning";
+                        btnCell.Text = "View";
                     }
                     else
                     {
-                        viewWorkplan.Attributes.Add("date", this.startOfWeek.AddDays(x - 2).Date.ToString());
-                        viewWorkplan.Attributes.Add("time", timeHours.TotalHours.ToString());
-                        tCell.Controls.Add(viewWorkplan);
+                        btnCell.Attributes.Add("date", this.startOfWeek.AddDays(x - 1).Date.ToString());
+                        btnCell.Attributes.Add("time", (timeHours.TotalHours).ToString());
+
+                        btnCell.Click += AddWorkPlan_Click;
+                        btnCell.CssClass = "btn-success";
+                        btnCell.Text = "Allocate";
                     }
+                    tCell.Controls.Add(btnCell);
                 }
                 tCell.Style.Add("text-align", "center");
 
@@ -148,17 +161,80 @@ public partial class ManagerHomepage_ManagerHomepage : System.Web.UI.Page
         }
     }
 
+    private void btnDeclineBooking_Click(object sender, EventArgs e)
+    {
+        int index = this.lstBookings.SelectedIndex;
+        if (index < 0 || index > this.bookings.Count)
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Please select a booking')", true);
+            return;
+        }
+        Booking booking = this.bookings[index];
+        this.services.UpdateBooking("NAH", booking);
+        Response.Redirect(Request.RawUrl);
+    }
+
     private void AddWorkPlan_Click(object sender, EventArgs e)
     {
         Button button = (Button)sender;
         DateTime date = DateTime.Parse(button.Attributes["date"].ToString());
         int hours = int.Parse(button.Attributes["time"].ToString());
-        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", string.Format("alert('{0}-{1}')", date.Date, hours), true);
+
+        int index = this.lstBookings.SelectedIndex;
+        if (index < 0 || index > this.bookings.Count)
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Please select a booking')", true);
+            return;
+        }
+
+        Booking booking = this.bookings[index];
+        if (booking.Date != date.ToShortDateString())
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", string.Format("alert('Booking requested for {0}, please select a time within this date')", booking.Date), true);
+            return;
+        }
+
+        index = this.lstStaff.SelectedIndex;
+        if (index < 0 || index > this.staffMembers.Count)
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Please selected a staff member')", true);
+            return;
+        }
+
+        Staff stf = this.staffMembers[index];
+        if (stf.BusyDates.Contains(date.Date.ToShortDateString()))
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Sorry this staff member is unavailable on this day')", true);
+            return;
+        }
+
+        Workplan workplan = new Workplan()
+        {
+            WorkPlanID = this.services.GetNewWorkPlanID(),
+            BookingID = booking.BookingID,
+            AssignedStaffMemberID = stf.ID,
+            Date = date.ToShortDateString(),
+            Time = (hours.ToString() + ":00"),
+        };
+        this.services.UpdateBooking("Approve", booking);
+        this.services.UpdateWorkplans(false, workplan);
+        Response.Redirect(Request.RawUrl);
     }
 
     private void viewWorkPlan_Click(object sender, EventArgs e)
     {
+        Button button = (Button)sender;
+        DateTime date = DateTime.Parse(button.Attributes["date"].ToString());
+        int hours = int.Parse(button.Attributes["time"].ToString());
+        string workplanID = button.Attributes["workplanID"];
+        string staffID = button.Attributes["staffID"];
+        string bookingID = button.Attributes["bookingID"];
 
+        Application["workplanID"] = workplanID;
+        Application["staffID"] = staffID;
+        Application["bookingID"] = bookingID;
+
+        Response.Redirect("~/ManagerViewBooking/ManagerViewBooking.aspx", true);
     }
 
     public void lstBookings_SelectedIndexChanged(object sender, EventArgs e)

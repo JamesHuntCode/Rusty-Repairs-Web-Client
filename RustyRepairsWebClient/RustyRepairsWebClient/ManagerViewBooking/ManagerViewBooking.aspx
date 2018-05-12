@@ -21,7 +21,6 @@
                     <div class="row mt-3">
                         <div class="col" style="border-width: 2px; border-style: solid">
                             <asp:Label ID="lblWorkplanInfo" runat="server" Text="Workplan Info" Font-Size="X-Large"></asp:Label>
-
                             <div class="input-group mb-3" style="width: 100%">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" style="width: 14vw" id="">Staff ID:</span>
@@ -40,13 +39,76 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" style="width: 14vw" id="">Workplan description:</span>
                                 </div>
-                                <asp:TextBox ID="txtWorkplanDesc" type="text" class="form-control" runat="server" ReadOnly="True" TextMode="MultiLine" />
+                                <asp:TextBox ID="txtWorkplanDesc" type="text" class="form-control" runat="server" TextMode="MultiLine" />
                             </div>
                         </div>
+                        <div class="col" style="border-width: 2px; border-style: solid">
+                            <asp:Label ID="lblBookingInfo" runat="server" Text="Booking Info" Font-Size="X-Large"></asp:Label>
+                            <div class="input-group mb-3" style="width: 100%">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="width: 14vw" id="">First and Last name:</span>
+                                </div>
+                                <asp:TextBox ID="txtFirstName" type="text" class="form-control" runat="server" ReadOnly="True" />
+                                <asp:TextBox ID="txtLastName" type="text" class="form-control" runat="server" ReadOnly="True" />
+                            </div>
 
+                            <div class="input-group mb-3" style="width: 100%">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="width: 14vw" id="">Booking date:</span>
+                                </div>
+                                <asp:TextBox ID="txtDate" type="text" class="form-control" runat="server" ReadOnly="True" />
+                            </div>
+                            <div class="input-group mb-3" style="width: 100%">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="width: 14vw" id="">Booking time:</span>
+                                </div>
+                                <asp:TextBox ID="txtTime" type="text" class="form-control" runat="server" ReadOnly="True" />
+                            </div>
+                            <div class="input-group mb-3" style="width: 100%">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="width: 14vw" id="">Owner name:</span>
+                                </div>
+                                <asp:TextBox ID="txtOwnerName" type="text" class="form-control" runat="server" ReadOnly="True" />
+                            </div>
 
+                            <div class="input-group mb-3" style="width: 100%">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="width: 14vw" id="">Vehicle make:</span>
+                                </div>
+                                <asp:TextBox ID="txtVehicleMake" type="text" class="form-control" runat="server" ReadOnly="True" />
+                            </div>
 
-                        <div class="row mt-3 mb-3">
+                            <div class="input-group mb-3" style="width: 100%">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="width: 14vw" id="">Vehicle model:</span>
+                                </div>
+                                <asp:TextBox ID="txtVehicleModel" type="text" class="form-control" runat="server" ReadOnly="True" />
+                            </div>
+
+                            <div class="input-group mb-3" style="width: 100%">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="width: 14vw" id="">Vehicle registration:</span>
+                                </div>
+                                <asp:TextBox ID="txtVehicleReg" type="text" class="form-control" runat="server" ReadOnly="True" />
+                            </div>
+
+                            <div class="input-group mb-3" style="width: 100%">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="width: 14vw" id="">Previous no show:</span>
+                                </div>
+                                <asp:TextBox ID="txtNoShow" type="text" class="form-control" runat="server" ReadOnly="True" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3 mb-3 text-center">
+                        <div class="col">
+                            <asp:Button ID="btnBack" CssClass="btn-secondary" runat="server" Text="Back" />
+                        </div>
+                        <div class="col">
+                            <asp:Button ID="btnEdit" CssClass="btn-warning" runat="server" Text="Edit" />
+                        </div>
+                        <div class="col">
+                            <asp:Button ID="btnDelete" CssClass="btn-danger" runat="server" Text="Delete" />
                         </div>
                     </div>
                 </ContentTemplate>

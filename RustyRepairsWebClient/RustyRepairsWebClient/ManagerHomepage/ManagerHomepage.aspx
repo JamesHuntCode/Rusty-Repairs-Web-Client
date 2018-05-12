@@ -24,11 +24,9 @@
                             <asp:ListBox ID="lstBookings" OnSelectedIndexChanged="lstBookings_SelectedIndexChanged" Style="text-align: center; font-size: 24px;" runat="server" Width="100%" Rows="6"></asp:ListBox>
                         </div>
                     </div>
-
                     <div class="row mt-3 text-center">
                         <div class="col" style="border-width: 2px; border-style: solid">
                             <asp:Label ID="lblBookingInfo" runat="server" Text="Booking Info" Font-Size="X-Large"></asp:Label>
-
                             <div class="input-group mb-3" style="width: 100%">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" style="width: 14vw" id="">First and Last name:</span>
@@ -78,8 +76,6 @@
                                 </div>
                                 <asp:TextBox ID="txtNoShow" type="text" class="form-control" runat="server" ReadOnly="True" />
                             </div>
-
-                            <%--  <asp:Label ID="lblBookingName" runat="server" Text="First name & Last name"></asp:Label><input id="Text1" type="text" />--%>
                         </div>
                         <%--<div class="col" style="border-width: 2px; border-style: solid">
                             <asp:Label ID="lblWorkplanInfo" runat="server" Text="Workplan Info" Font-Size="X-Large"></asp:Label>
@@ -105,6 +101,17 @@
                                 <asp:TextBox ID="txtWorkplanDesc" type="text" class="form-control" runat="server" ReadOnly="True" TextMode="MultiLine" />
                             </div>
                         </div><--%>
+                    </div>
+                    <div class="row mt-3 text-center">
+                        <div class="col">
+                            <h1>Staff</h1>
+                            <asp:ListBox ID="lstStaff" OnSelectedIndexChanged="lstBookings_SelectedIndexChanged" Style="text-align: center; font-size: 24px;" runat="server" Width="100%" Rows="6"></asp:ListBox>
+                        </div>
+                    </div>
+                    <div class="row mt-3 text-center">
+                        <div class="col">
+                            <asp:Button ID="btnDeclineBooking" CssClass="btn-danger" runat="server" Text="Decline booking" />
+                        </div>
                     </div>
                     <div class="row mt-3 mb-3 text-center">
                         <div class="col">
