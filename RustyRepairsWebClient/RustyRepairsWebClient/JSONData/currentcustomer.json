@@ -1,22 +1,35 @@
 [
   {
-    "Bookings": [],
-    "Vehicles": [
+    "Bookings": [
       {
-        "CustomerID": 7,
-        "CarMake": "Ford",
-        "CarModel": "Mustang",
-        "CarRegistration": "123ABC",
-        "OwnerName": "Pedr0 R0D"
+        "CustomerID": 9,
+        "BookingID": 3,
+        "Pending": true,
+        "ManagerApproved": false,
+        "ManagerDeclined": false,
+        "Completed": false,
+        "Cancelled": false,
+        "Date": "12/06/2018",
+        "Time": "17:26",
+        "ProblemSummary": "check up"
       }
     ],
-    "CustomerID": 7,
-    "JoinDate": "11/05/2018",
+    "Vehicles": [
+      {
+        "CustomerID": 9,
+        "CarMake": "ford",
+        "CarModel": "thing",
+        "CarRegistration": "PU55Y",
+        "OwnerName": "Jim Jim"
+      }
+    ],
+    "CustomerID": 9,
+    "JoinDate": "12/05/2018",
     "HasMissedBooking": false,
     "HasActiveAccount": false,
-    "FirstName": "Pedro",
-    "LastName": "Rod",
-    "EmailAddress": "ped@gmail.com",
-    "Password": "ped1"
+    "FirstName": "Jimmy",
+    "LastName": "Jimsworth",
+    "EmailAddress": "jim@jim.com",
+    "Password": "password"
   }
 ]
