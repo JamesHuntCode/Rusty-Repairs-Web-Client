@@ -15,6 +15,14 @@
 <body oncontextmenu="return false">
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true"></asp:ScriptManager>
+        <script type="text/javascript" language="javascript">
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
+            function EndRequestHandler(sender, args) {
+                if (args.get_error() != undefined) {
+                    args.set_errorHandled(true);
+                }
+            }
+        </script>
         <div class="container">
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
