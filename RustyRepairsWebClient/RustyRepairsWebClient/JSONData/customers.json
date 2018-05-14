@@ -4,9 +4,9 @@
       {
         "CustomerID": 3,
         "BookingID": 3,
-        "Pending": false,
+        "Pending": true,
         "ManagerApproved": false,
-        "ManagerDeclined": true,
+        "ManagerDeclined": false,
         "Completed": false,
         "Cancelled": false,
         "Date": "12/06/2018",
@@ -202,9 +202,9 @@
       {
         "CustomerID": 3,
         "BookingID": 3,
-        "Pending": false,
+        "Pending": true,
         "ManagerApproved": false,
-        "ManagerDeclined": true,
+        "ManagerDeclined": false,
         "Completed": false,
         "Cancelled": false,
         "Date": "12/06/2018",
@@ -235,9 +235,9 @@
       {
         "CustomerID": 3,
         "BookingID": 3,
-        "Pending": false,
+        "Pending": true,
         "ManagerApproved": false,
-        "ManagerDeclined": true,
+        "ManagerDeclined": false,
         "Completed": false,
         "Cancelled": false,
         "Date": "12/06/2018",
@@ -314,6 +314,39 @@
     "FirstName": "Tim",
     "LastName": "Ned",
     "EmailAddress": "ned@tim.co",
+    "Password": "pass1"
+  },
+  {
+    "Bookings": [
+      {
+        "CustomerID": 14,
+        "BookingID": 6,
+        "Pending": true,
+        "ManagerApproved": false,
+        "ManagerDeclined": false,
+        "Completed": false,
+        "Cancelled": false,
+        "Date": "1/06/2018",
+        "Time": "10:30",
+        "ProblemSummary": "broken lights"
+      }
+    ],
+    "Vehicles": [
+      {
+        "CustomerID": 14,
+        "CarMake": "ford",
+        "CarModel": "ka",
+        "CarRegistration": "123ABC",
+        "OwnerName": "Kyle"
+      }
+    ],
+    "CustomerID": 14,
+    "JoinDate": "14/05/2018",
+    "HasMissedBooking": false,
+    "HasActiveAccount": false,
+    "FirstName": "example",
+    "LastName": "name",
+    "EmailAddress": "e@email.com",
     "Password": "pass1"
   }
 ]

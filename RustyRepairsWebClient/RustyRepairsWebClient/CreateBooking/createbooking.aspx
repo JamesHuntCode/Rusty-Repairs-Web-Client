@@ -40,6 +40,7 @@
                 <asp:textbox runat="server" ID="problemSummary" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
             </div>
             <!-- Create Booking Button -->
+            <p class="text-center"><i>Rusty's Repairs <b>DOES NOT</b> accept weekend bookings.</i></p>
             <asp:Button runat="server" ID="btnCreate" OnClick="CreateBooking" type="button" style="width: 40vw" class="btn btn-outline-success btn-lg btn-block mx-auto mt-4" Text="Submit Booking Request" />
         </form>
     </div>
