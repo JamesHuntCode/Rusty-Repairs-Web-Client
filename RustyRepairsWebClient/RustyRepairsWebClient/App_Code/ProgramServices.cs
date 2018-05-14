@@ -181,7 +181,14 @@ namespace RustyRepairsWebClient
 
             List<Customer> allCustomers = this.GetCustomerData();
 
-            newID = allCustomers.Count + 1;
+            if (allCustomers != null)
+            {
+                newID = allCustomers.Count + 1;
+            }
+            else
+            {
+                newID = 1;
+            }
 
             return newID;
         }
@@ -193,7 +200,14 @@ namespace RustyRepairsWebClient
 
             List<Booking> bookings = this.GetCustomerBookingData();
 
-            newID = bookings.Count + 1;
+            if (bookings != null)
+            {
+                newID = bookings.Count + 1;
+            }
+            else
+            {
+                newID = 1;
+            }
 
             return newID;
         }
@@ -219,14 +233,21 @@ namespace RustyRepairsWebClient
 
             if (!updating)
             {
-                for (int i = 0; i < allCustomers.Count; i++)
+                if (allCustomers != null)
                 {
-                    Customer currentCustomer = allCustomers[i];
-
-                    if (email == currentCustomer.EmailAddress)
+                    for (int i = 0; i < allCustomers.Count; i++)
                     {
-                        return true;
+                        Customer currentCustomer = allCustomers[i];
+
+                        if (email == currentCustomer.EmailAddress)
+                        {
+                            return true;
+                        }
                     }
+                }
+                else
+                {
+                    return false;
                 }
             }
             else
@@ -486,6 +507,16 @@ namespace RustyRepairsWebClient
             {
                 // Update customer data
                 List<Customer> currentCustomers = this.GetCustomerData();
+
+                if (currentCustomers != null)
+                {
+                    currentCustomers = this.GetCustomerData();
+                }
+                else
+                {
+                    currentCustomers = new List<Customer>();
+                }
+
                 currentCustomers.Add(newCust);
                 string updatedCustomerData = JsonConvert.SerializeObject(currentCustomers, Formatting.Indented);
                 File.WriteAllText(System.Web.Hosting.HostingEnvironment.MapPath(this.customerFile), updatedCustomerData);

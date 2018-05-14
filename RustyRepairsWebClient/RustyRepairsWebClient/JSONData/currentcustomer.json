@@ -2,34 +2,34 @@
   {
     "Bookings": [
       {
-        "CustomerID": 14,
-        "BookingID": 6,
+        "CustomerID": 1,
+        "BookingID": 1,
         "Pending": true,
         "ManagerApproved": false,
         "ManagerDeclined": false,
         "Completed": false,
         "Cancelled": false,
-        "Date": "1/06/2018",
-        "Time": "10:30",
-        "ProblemSummary": "broken lights"
+        "Date": "14/06/2018",
+        "Time": "11:30",
+        "ProblemSummary": "broken real bad."
       }
     ],
     "Vehicles": [
       {
-        "CustomerID": 14,
-        "CarMake": "ford",
-        "CarModel": "ka",
+        "CustomerID": 1,
+        "CarMake": "Audi",
+        "CarModel": "A4",
         "CarRegistration": "123ABC",
-        "OwnerName": "Kyle"
+        "OwnerName": "Dominic Need"
       }
     ],
-    "CustomerID": 14,
+    "CustomerID": 1,
     "JoinDate": "14/05/2018",
     "HasMissedBooking": false,
     "HasActiveAccount": false,
-    "FirstName": "example",
-    "LastName": "name",
-    "EmailAddress": "e@email.com",
-    "Password": "pass1"
+    "FirstName": "James",
+    "LastName": "Hunt",
+    "EmailAddress": "james@james.co.uk",
+    "Password": "password"
   }
 ]
